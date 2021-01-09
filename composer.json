@@ -15,7 +15,8 @@
         "guzzlehttp/guzzle": "^7.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^9.5"
+        "phpunit/phpunit": "^9.5",
+        "easy-http/guzzle-layer": "^0.1.0"
     },
     "scripts": {
         "phpunit": "phpunit --stop-on-error --stop-on-failure --testdox"
