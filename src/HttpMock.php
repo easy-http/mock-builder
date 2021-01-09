@@ -17,8 +17,7 @@ class HttpMock
 
     public function __invoke(RequestInterface $request): FulfilledPromise
     {
-        foreach ($this->builder->getExpectations() as $expectation)
-        {
+        foreach ($this->builder->getExpectations() as $expectation) {
             $matches = false;
 
             if ($method = $expectation->getMethod()) {
