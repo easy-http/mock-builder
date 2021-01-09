@@ -27,6 +27,21 @@ class HttpMock
                 }
             }
 
+            parse_str($request->getUri()->getQuery(), $params);
+
+            foreach ($expectation->getQueryParams() as $param => $value) {
+                if (!array_key_exists($param, $params)) {
+                    $matches = false;
+                    break;
+                }
+
+                $matches = ($params[$param] === $value);
+
+                if (!$matches) {
+                    break;
+                }
+            }
+
             if ($matches) {
                 return $expectation->responseBuilder()->response();
             }

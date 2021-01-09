@@ -17,6 +17,9 @@
     "require-dev": {
         "phpunit/phpunit": "^9.5"
     },
+    "scripts": {
+        "phpunit": "phpunit --stop-on-error --stop-on-failure --testdox"
+    },
     "autoload": {
         "psr-4": {
             "EasyHttp\\MockBuilder\\": "src/"
