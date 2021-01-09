@@ -18,7 +18,7 @@ class HttpMockTest extends TestCase
         $builder = new MockBuilder();
         $builder
             ->when()
-                ->methodIs('foo')
+                ->methodIs('POST')
             ->then()
                 ->body('bar');
 

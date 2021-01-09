@@ -22,7 +22,7 @@ class HttpMock
             $matches = false;
 
             if ($method = $expectation->getMethod()) {
-                if ($request->getMethod() !== $method) {
+                if ($request->getMethod() === $method) {
                     $matches = true;
                 }
             }
