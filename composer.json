@@ -1,6 +1,6 @@
 {
     "name": "easy-http/mock-builder",
-    "description": "Fluid interface to build HTTP mocks",
+    "description": "A fluid interface to build HTTP mocks",
     "type": "library",
     "license": "MIT",
     "authors": [
