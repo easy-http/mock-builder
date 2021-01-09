@@ -2,7 +2,7 @@
 
 # Mock builder
 
-A fluid interface to build HTTP mocks. You can use this library to build mock for Guzzle, Symfony and other HTTP Clients.
+A fluid interface to build HTTP mocks. You can use this library to build mocks for Guzzle, Symfony and other HTTP Clients.
 
 # Requirements
 
@@ -46,7 +46,22 @@ $client
 
 ## Expectations
 
-| Method                                          | Name                                  |
-|-------------------------------------------------|---------------------------------------|
-| `methodIs(string $method)`                      | Expects for a method                  |
-| `queryParamIs(string $key, string $value)`      | Expects for a specific query param    |
+`methodIs(string $method)`
+
+Expects for a method.
+
+### URL
+
+There are a few expectations for URL components. Remember a URL is a Uniform Resource Locator
+that locates an existing resource on the Internet. A URL for HTTP (or HTTPS) is normally made up of three or four components:
+
+- A schema
+- A host
+- A path
+- A query string
+
+In this way, you can use the following expectations for URL matching.
+
+`queryParamIs(string $key, string $value)`
+
+Expects for a specific query param (for example term=bluebird).
