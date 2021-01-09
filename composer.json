@@ -1,0 +1,26 @@
+{
+    "name": "easy-http/mock-builder",
+    "description": "Fluid interface to build HTTP mocks",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Darío Rivera",
+            "email": "fermius.us@gmail.com"
+        }
+    ],
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "EasyHttp\\MockBuilder\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "EasyHttp\\MockBuilder\\Tests\\": "tests/"
+        }
+    }
+}
