@@ -28,7 +28,7 @@ class HttpMock
             }
 
             if ($matches) {
-                return $expectation->getResponse()->getResponse();
+                return $expectation->responseBuilder()->response();
             }
         }
 

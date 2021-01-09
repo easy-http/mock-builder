@@ -7,20 +7,20 @@ use EasyHttp\MockBuilder\ResponseBuilders\GuzzleResponseBuilder;
 
 class Expectation
 {
-    protected ResponseBuilder $response;
+    protected ResponseBuilder $responseBuilder;
 
     private string $method;
 
     public function then(): ResponseBuilder
     {
-        $this->response = new GuzzleResponseBuilder();
+        $this->responseBuilder = new GuzzleResponseBuilder();
 
-        return $this->response;
+        return $this->responseBuilder;
     }
 
-    public function getResponse(): ResponseBuilder
+    public function responseBuilder(): ResponseBuilder
     {
-        return $this->response;
+        return $this->responseBuilder;
     }
 
     public function getMethod(): ?string

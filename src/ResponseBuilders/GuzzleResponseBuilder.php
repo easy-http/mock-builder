@@ -24,7 +24,7 @@ class GuzzleResponseBuilder implements ResponseBuilder
         return $this;
     }
 
-    public function getResponse(): FulfilledPromise
+    public function response(): FulfilledPromise
     {
         return new FulfilledPromise(
             new Response($this->statusCode, $this->headers, $this->getBody())
