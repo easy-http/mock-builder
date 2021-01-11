@@ -3,6 +3,8 @@
 namespace EasyHttp\MockBuilder;
 
 use GuzzleHttp\Promise\FulfilledPromise;
+use GuzzleHttp\Promise\Promise;
+use GuzzleHttp\Promise\RejectedPromise;
 use GuzzleHttp\Psr7\Response;
 use Psr\Http\Message\RequestInterface;
 
@@ -18,28 +20,44 @@ class HttpMock
     public function __invoke(RequestInterface $request): FulfilledPromise
     {
         foreach ($this->builder->getExpectations() as $expectation) {
-            $matches = false;
+            $matches = true;
 
-            if ($method = $expectation->getMethod()) {
-                if ($request->getMethod() === $method) {
-                    $matches = true;
+            $promise = new Promise(function() use (&$promise, $request) {
+                $promise->resolve($request);
+            });
+            $promise->then(
+                function ($request) use ($expectation) {
+                    if ($method = $expectation->getMethod()) {
+                        if ($request->getMethod() !== $method) {
+                            return new RejectedPromise('method does not match expectation');
+                        }
+                    }
+
+                    return $request;
                 }
-            }
+            )->then(
+                function ($request) use ($expectation) {
+                    parse_str($request->getUri()->getQuery(), $params);
 
-            parse_str($request->getUri()->getQuery(), $params);
+                    foreach ($expectation->getQueryParams() as $param => $value) {
+                        if (!array_key_exists($param, $params)) {
+                            return new RejectedPromise('param ' . $param . ' is not present');
+                        }
 
-            foreach ($expectation->getQueryParams() as $param => $value) {
-                if (!array_key_exists($param, $params)) {
+                        if ($params[$param] !== $value) {
+                            return new RejectedPromise('param ' . $param . ' is different from expectation');
+                        }
+                    }
+
+                    return $request;
+                }
+            )->otherwise(
+                function() use (&$matches) {
                     $matches = false;
-                    break;
                 }
+            );
 
-                $matches = ($params[$param] === $value);
-
-                if (!$matches) {
-                    break;
-                }
-            }
+            $promise->wait();
 
             if ($matches) {
                 return $expectation->responseBuilder()->response();

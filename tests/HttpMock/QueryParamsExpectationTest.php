@@ -51,7 +51,7 @@ class QueryParamsExpectationTest extends TestCase
             'Different parameter expectation and values' => [['foo' => 'bar'], ['bar' => 'baz'], false],
             'Match only first parameter' => [['a' => 'b', 'x' => 'y'], ['a' => 'b', 'x' => 'z'], false],
             'Match only last parameter' => [['a' => 'b', 'x' => 'y'], ['a' => 'z', 'x' => 'y'], false],
-            'No expectation' => [[], ['a' => 'z', 'x' => 'y'], false],
+            'No expectation' => [[], ['a' => 'z', 'x' => 'y'], true],
         ];
     }
 }
