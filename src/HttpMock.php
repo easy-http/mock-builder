@@ -3,6 +3,7 @@
 namespace EasyHttp\MockBuilder;
 
 use EasyHttp\MockBuilder\Expectations\MethodIsExpectation;
+use EasyHttp\MockBuilder\Expectations\ParamExistsExpectation;
 use EasyHttp\MockBuilder\Expectations\ParamIsExpectation;
 use GuzzleHttp\Promise\FulfilledPromise;
 use GuzzleHttp\Promise\Promise;
@@ -29,6 +30,7 @@ class HttpMock
             $promise
                 ->then(MethodIsExpectation::from($expectation))
                 ->then(ParamIsExpectation::from($expectation))
+                ->then(ParamExistsExpectation::from($expectation))
                 ->otherwise(
                     function() use (&$matches) {
                         $matches = false;
