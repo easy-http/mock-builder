@@ -6,7 +6,6 @@ use EasyHttp\MockBuilder\Expectations\MethodIsExpectation;
 use EasyHttp\MockBuilder\Expectations\ParamIsExpectation;
 use GuzzleHttp\Promise\FulfilledPromise;
 use GuzzleHttp\Promise\Promise;
-use GuzzleHttp\Promise\RejectedPromise;
 use GuzzleHttp\Psr7\Response;
 use Psr\Http\Message\RequestInterface;
 
