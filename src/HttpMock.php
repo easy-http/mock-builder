@@ -2,6 +2,8 @@
 
 namespace EasyHttp\MockBuilder;
 
+use EasyHttp\MockBuilder\Expectations\MethodIsExpectation;
+use EasyHttp\MockBuilder\Expectations\ParamIsExpectation;
 use GuzzleHttp\Promise\FulfilledPromise;
 use GuzzleHttp\Promise\Promise;
 use GuzzleHttp\Promise\RejectedPromise;
@@ -25,36 +27,13 @@ class HttpMock
             $promise = new Promise(function() use (&$promise, $request) {
                 $promise->resolve($request);
             });
-            $promise->then(
-                function ($request) use ($expectation) {
-                    if ($method = $expectation->getMethod()) {
-                        if ($request->getMethod() !== $method) {
-                            return new RejectedPromise('method does not match expectation');
-                        }
+            $promise
+                ->then(MethodIsExpectation::from($expectation))
+                ->then(ParamIsExpectation::from($expectation))
+                ->otherwise(
+                    function() use (&$matches) {
+                        $matches = false;
                     }
-
-                    return $request;
-                }
-            )->then(
-                function ($request) use ($expectation) {
-                    parse_str($request->getUri()->getQuery(), $params);
-
-                    foreach ($expectation->getQueryParams() as $param => $value) {
-                        if (!array_key_exists($param, $params)) {
-                            return new RejectedPromise('param ' . $param . ' is not present');
-                        }
-
-                        if ($params[$param] !== $value) {
-                            return new RejectedPromise('param ' . $param . ' is different from expectation');
-                        }
-                    }
-
-                    return $request;
-                }
-            )->otherwise(
-                function() use (&$matches) {
-                    $matches = false;
-                }
             );
 
             $promise->wait();
