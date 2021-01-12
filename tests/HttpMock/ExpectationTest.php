@@ -16,14 +16,18 @@ class ExpectationTest extends TestCase
      * @param array $request
      * @param $matching
      */
-    public function itMatchesExpectedResponse(array $expectation, array $request, $matching)
+    public function itMatchesExpectedResponse(array $expectation, array $request, bool $matching)
     {
         $builder = new MockBuilder();
         $when = $builder->when();
 
         $when->methodIs($expectation['method']);
         foreach ($expectation['query'] as $key => $value) {
-            $when->queryParamIs($key, $value);
+            if (is_null($value)) {
+                $when->queryParamExists($key);
+            } else {
+                $when->queryParamIs($key, $value);
+            }
         }
 
         $when->then()->body('Hello World!');
@@ -59,6 +63,16 @@ class ExpectationTest extends TestCase
             'Different query but same method' => [
                 ['method' => 'POST', 'query' => ['foo' => 'bar']],
                 ['method' => 'POST', 'query' => ['x' => 'y']],
+                false
+            ],
+            'Existing parameter and same method' => [
+                ['method' => 'POST', 'query' => ['foo' => null]],
+                ['method' => 'POST', 'query' => ['foo' => 'y']],
+                true
+            ],
+            'Not existing parameter and same method' => [
+                ['method' => 'POST', 'query' => ['bar' => null]],
+                ['method' => 'POST', 'query' => ['foo' => 'y']],
                 false
             ],
         ];

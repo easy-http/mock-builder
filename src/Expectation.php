@@ -47,4 +47,11 @@ class Expectation
 
         return $this;
     }
+
+    public function queryParamExists(string $key): self
+    {
+        $this->queryParams[$key] = null;
+
+        return $this;
+    }
 }
