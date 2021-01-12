@@ -4,8 +4,9 @@ namespace EasyHttp\MockBuilder;
 
 use EasyHttp\MockBuilder\Contracts\QueryParameterAggregate;
 use EasyHttp\MockBuilder\Contracts\ResponseBuilder;
-use EasyHttp\MockBuilder\Iterators\NotEmptyQueryParamsIterator;
-use EasyHttp\MockBuilder\Iterators\EmptyQueryParamsIterator;
+use EasyHttp\MockBuilder\Iterators\ArrayIterator;
+use EasyHttp\MockBuilder\Iterators\NotEmptyArrayValuesIterator;
+use EasyHttp\MockBuilder\Iterators\EmptyArrayValuesIterator;
 use EasyHttp\MockBuilder\ResponseBuilders\GuzzleResponseBuilder;
 
 class Expectation implements QueryParameterAggregate
@@ -14,6 +15,7 @@ class Expectation implements QueryParameterAggregate
 
     private string $method;
     private array $queryParams = [];
+    private array $missingQueryParams = [];
 
     public function then(): ResponseBuilder
     {
@@ -58,13 +60,25 @@ class Expectation implements QueryParameterAggregate
         return $this;
     }
 
-    public function notEmptyQueryParamsIterator(): NotEmptyQueryParamsIterator
+    public function queryParamNotExists(string $key): self
     {
-        return new NotEmptyQueryParamsIterator($this->queryParams);
+        $this->missingQueryParams[$key] = null;
+
+        return $this;
     }
 
-    public function emptyQueryParamsIterator(): EmptyQueryParamsIterator
+    public function notEmptyQueryParamsIterator(): NotEmptyArrayValuesIterator
     {
-        return new EmptyQueryParamsIterator($this->queryParams);
+        return new NotEmptyArrayValuesIterator($this->queryParams);
+    }
+
+    public function emptyQueryParamsIterator(): EmptyArrayValuesIterator
+    {
+        return new EmptyArrayValuesIterator($this->queryParams);
+    }
+
+    public function missingQueryParamsIterator(): ArrayIterator
+    {
+        return new ArrayIterator($this->missingQueryParams);
     }
 }
