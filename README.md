@@ -64,8 +64,8 @@ In this way, you can use the following expectations for URL matching.
 
 `queryParamIs(string $key, string $value)`
 
-Expects for a query param with specific value (for example term=bluebird).
+Expects for a query parameter with specific value (for example term=bluebird).
 
 `queryParamExists(string $param)`
 
-Expects a query param exists.
+Expects a query parameter exists.
