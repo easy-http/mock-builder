@@ -34,11 +34,6 @@ class Expectation implements QueryParameterAggregate
         return $this->method ?? null;
     }
 
-    public function getQueryParams(): array
-    {
-        return $this->queryParams;
-    }
-
     public function methodIs(string $method): self
     {
         $this->method = $method;
