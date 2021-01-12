@@ -16,11 +16,7 @@ class ParamExistsExpectation implements ExpectationMatcher
             /** @var RequestInterface $request */
             parse_str($request->getUri()->getQuery(), $params);
 
-            foreach ($expectation->getQueryParams() as $param => $value) {
-                if (!is_null($value)) {
-                    continue;
-                }
-
+            foreach ($expectation->emptyQueryParamsIterator() as $param => $value) {
                 if (!array_key_exists($param, $params)) {
                     return new RejectedPromise('param ' . $param . ' is not present');
                 }

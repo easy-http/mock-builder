@@ -2,10 +2,13 @@
 
 namespace EasyHttp\MockBuilder;
 
+use EasyHttp\MockBuilder\Contracts\QueryParameterAggregate;
 use EasyHttp\MockBuilder\Contracts\ResponseBuilder;
+use EasyHttp\MockBuilder\Iterators\NotEmptyQueryParamsIterator;
+use EasyHttp\MockBuilder\Iterators\EmptyQueryParamsIterator;
 use EasyHttp\MockBuilder\ResponseBuilders\GuzzleResponseBuilder;
 
-class Expectation
+class Expectation implements QueryParameterAggregate
 {
     protected ResponseBuilder $responseBuilder;
 
@@ -53,5 +56,15 @@ class Expectation
         $this->queryParams[$key] = null;
 
         return $this;
+    }
+
+    public function notEmptyQueryParamsIterator(): NotEmptyQueryParamsIterator
+    {
+        return new NotEmptyQueryParamsIterator($this->queryParams);
+    }
+
+    public function emptyQueryParamsIterator(): EmptyQueryParamsIterator
+    {
+        return new EmptyQueryParamsIterator($this->queryParams);
     }
 }
