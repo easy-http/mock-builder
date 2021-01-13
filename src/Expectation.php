@@ -99,6 +99,13 @@ class Expectation implements QueryParameterAggregate, HeaderAggregate
         return $this;
     }
 
+    public function headerExists(string $key): self
+    {
+        $this->headers[$key] = null;
+
+        return $this;
+    }
+
     public function notEmptyQueryParamsIterator(): NotEmptyArrayValuesIterator
     {
         return new NotEmptyArrayValuesIterator($this->queryParams);
@@ -117,5 +124,10 @@ class Expectation implements QueryParameterAggregate, HeaderAggregate
     public function notEmptyHeadersIterator(): NotEmptyArrayValuesIterator
     {
         return new NotEmptyArrayValuesIterator($this->headers);
+    }
+
+    public function emptyHeadersIterator(): EmptyArrayValuesIterator
+    {
+        return new EmptyArrayValuesIterator($this->headers);
     }
 }
