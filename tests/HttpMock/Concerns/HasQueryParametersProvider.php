@@ -29,4 +29,17 @@ trait HasQueryParametersProvider
             'No expectation' => [[], ['a' => 'z', 'x' => 'y'], true],
         ];
     }
+
+    public function notExistingQueryParamsProvider(): array
+    {
+        return [
+            'Parameter exists in query' => [['foo'], ['foo' => 'bar'], false],
+            'Parameters exists in query' => [['a', 'x'], ['a' => 'b', 'x' => 'y'], false],
+            'Parameter does not exists in query' => [['foo'], ['bar' => 'baz'], true],
+            'Parameters does not exists in query' => [['a', 'x'], ['b' => 'a', 'y' => 'x'], true],
+            'Only first parameter exists' => [['a', 'x'], ['a' => 'b'], false],
+            'Only last parameter exists' => [['a', 'x'], ['x' => 'y'], false],
+            'No expectation' => [[], ['a' => 'z', 'x' => 'y'], true],
+        ];
+    }
 }

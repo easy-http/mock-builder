@@ -81,6 +81,15 @@ class Expectation implements QueryParameterAggregate
         return $this;
     }
 
+    public function queryParamsNotExists(array $params): self
+    {
+        array_walk($params, function($value) {
+            $this->queryParamNotExists($value);
+        });
+
+        return $this;
+    }
+
     public function notEmptyQueryParamsIterator(): NotEmptyArrayValuesIterator
     {
         return new NotEmptyArrayValuesIterator($this->queryParams);
