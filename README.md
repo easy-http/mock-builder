@@ -53,7 +53,7 @@ $client
 |                            | [queryParamNotExists](#queryParamNotExists)   | [headerNotExists](#headerNotExists)   |
 |                            | [queryParamsAre](#queryParamsAre)             | [headersAre](#headersAre)             |
 |                            | [queryParamsExists](#queryParamsExists)       | [headersExists](#headersExists)       |
-|                            | [queryParamsNotExists](#queryParamsNotExists) |                                       |
+|                            | [queryParamsNotExists](#queryParamsNotExists) | [headersNotExists](#headersNotExists) |
 
 ### methodIs
 
@@ -202,6 +202,21 @@ $builder
 ### headersExists
 
 It expects a headers set exists.
+
+```php
+$builder
+    ->when()
+        ->headersExists([
+            'Authorization',
+            'Content-Type'
+        ])
+    ->then()
+        ...
+```
+
+### headersNotExists
+
+It expects a headers set does not exists.
 
 ```php
 $builder
