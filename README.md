@@ -73,3 +73,7 @@ Expects a query parameter exists.
 `queryParamNotExists(string $param)`
 
 Expects a query parameter does not exists.
+
+`queryParamsAre(array $params)`
+
+Expects for a query parameter set with specific values.
