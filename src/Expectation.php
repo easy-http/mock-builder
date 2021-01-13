@@ -18,6 +18,7 @@ class Expectation implements QueryParameterAggregate, HeaderAggregate
     private array $queryParams = [];
     private array $missingQueryParams = [];
     private array $headers = [];
+    private array $missingHeaders = [];
 
     public function then(): ResponseBuilder
     {
@@ -64,7 +65,6 @@ class Expectation implements QueryParameterAggregate, HeaderAggregate
         return $this;
     }
 
-
     public function queryParamsAre(array $params): self
     {
         array_walk($params, function($value, $key) {
@@ -106,6 +106,13 @@ class Expectation implements QueryParameterAggregate, HeaderAggregate
         return $this;
     }
 
+    public function headerNotExists(string $key): self
+    {
+        $this->missingHeaders[] = $key;
+
+        return $this;
+    }
+
     public function notEmptyQueryParamsIterator(): NotEmptyArrayValuesIterator
     {
         return new NotEmptyArrayValuesIterator($this->queryParams);
@@ -129,5 +136,10 @@ class Expectation implements QueryParameterAggregate, HeaderAggregate
     public function emptyHeadersIterator(): EmptyArrayValuesIterator
     {
         return new EmptyArrayValuesIterator($this->headers);
+    }
+
+    public function missingHeadersIterator(): ArrayIterator
+    {
+        return new ArrayIterator($this->missingHeaders);
     }
 }
