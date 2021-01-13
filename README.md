@@ -69,3 +69,7 @@ Expects for a query parameter with specific value (for example term=bluebird).
 `queryParamExists(string $param)`
 
 Expects a query parameter exists.
+
+`queryParamNotExists(string $param)`
+
+Expects a query parameter does not exists.
