@@ -57,7 +57,7 @@ $client
 
 ### methodIs
 
-Expects for a method.
+It expects for a method.
 
 ```php
 $builder
@@ -69,7 +69,7 @@ $builder
 
 ### queryParamIs
 
-Expects for a query parameter with specific value (for example term=bluebird).
+It expects for a query parameter with specific value (for example term=bluebird).
 
 ```php
 $builder
@@ -81,7 +81,7 @@ $builder
 
 ### queryParamExists
 
-Expects a query parameter exists.
+It expects a query parameter exists.
 
 ```php
 $builder
@@ -93,7 +93,7 @@ $builder
 
 ### queryParamNotExists
 
-Expects a query parameter does not exists.
+It expects a query parameter does not exists.
 
 ```php
 $builder
@@ -105,7 +105,7 @@ $builder
 
 ### queryParamsAre
 
-Expects for a query parameter set with specific values.
+It expects for a query parameters set with specific values.
 
 ```php
 $builder
@@ -120,7 +120,7 @@ $builder
 
 ### queryParamsExists
 
-Expects a query parameter set exists.
+It expects a query parameters set exists.
 
 ```php
 $builder
@@ -135,7 +135,7 @@ $builder
 
 ### queryParamsNotExists
 
-Expects a query parameter set does not exists.
+It expects a query parameters set does not exists.
 
 ```php
 $builder
@@ -150,7 +150,7 @@ $builder
 
 ### headerIs
 
-Expects for a header with specific value (for example Content-Type: text/html).
+It expects for a header with specific value (for example Content-Type: text/html).
 
 ```php
 $builder
@@ -162,7 +162,7 @@ $builder
 
 ### headerExists
 
-Expects a header exists.
+It expects a header exists.
 
 ```php
 $builder
@@ -174,7 +174,7 @@ $builder
 
 ### headerNotExists
 
-Expects a header does not exist.
+It expects a header does not exist.
 
 ```php
 $builder
@@ -186,7 +186,7 @@ $builder
 
 ### headersAre
 
-Expects for a header set with specific values.
+It expects for a headers set with specific values.
 
 ```php
 $builder
@@ -194,6 +194,21 @@ $builder
         ->headersAre([
             'Authorization' => 'Bearer YourToken',
             'Content-Type' => 'application/json'
+        ])
+    ->then()
+        ...
+```
+
+### headersExists
+
+It expects a headers set exists.
+
+```php
+$builder
+    ->when()
+        ->headersExists([
+            'Authorization',
+            'Content-Type'
         ])
     ->then()
         ...
