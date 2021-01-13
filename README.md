@@ -52,7 +52,7 @@ $client
 |                            | [queryParamExists](#queryParamExists)         | [headerExists](#headerExists)         |
 |                            | [queryParamNotExists](#queryParamNotExists)   | [headerNotExists](#headerNotExists)   |
 |                            | [queryParamsAre](#queryParamsAre)             | [headersAre](#headersAre)             |
-|                            | [queryParamsExists](#queryParamsExists)       |                                       |
+|                            | [queryParamsExists](#queryParamsExists)       | [headersExists](#headersExists)       |
 |                            | [queryParamsNotExists](#queryParamsNotExists) |                                       |
 
 ### methodIs
