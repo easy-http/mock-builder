@@ -8,7 +8,7 @@ use EasyHttp\MockBuilder\MockBuilder;
 use EasyHttp\MockBuilder\Tests\HttpMock\Concerns\HasQueryParametersProvider;
 use PHPUnit\Framework\TestCase;
 
-class QueryParamIsExpectationTest extends TestCase
+class QueryParamsAreExpectationTest extends TestCase
 {
     use HasQueryParametersProvider;
 
@@ -22,13 +22,12 @@ class QueryParamIsExpectationTest extends TestCase
     public function itMatchesQueryParams(array $expectation, array $query, bool $matching)
     {
         $builder = new MockBuilder();
-        $when = $builder->when();
+        $builder
+            ->when()
+                ->queryParamsAre($expectation)
+            ->then()
+                ->body('Hello World!');
 
-        foreach ($expectation as $key => $value) {
-            $when->queryParamIs($key, $value);
-        }
-
-        $when->then()->body('Hello World!');
         $mock = new HttpMock($builder);
 
         $client = new GuzzleClient();
