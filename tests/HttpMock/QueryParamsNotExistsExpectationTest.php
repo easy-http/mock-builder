@@ -5,16 +5,16 @@ namespace EasyHttp\MockBuilder\Tests\HttpMock;
 use EasyHttp\GuzzleLayer\GuzzleClient;
 use EasyHttp\MockBuilder\HttpMock;
 use EasyHttp\MockBuilder\MockBuilder;
-use EasyHttp\MockBuilder\Tests\HttpMock\Concerns\HasQueryParametersProvider;
+use EasyHttp\MockBuilder\Tests\HttpMock\Concerns\HasParametersProvider;
 use PHPUnit\Framework\TestCase;
 
 class QueryParamsNotExistsExpectationTest extends TestCase
 {
-    use HasQueryParametersProvider;
+    use HasParametersProvider;
 
     /**
      * @test
-     * @dataProvider notExistingQueryParamsProvider
+     * @dataProvider notExistingParamsProvider
      * @param array $expectation
      * @param array $query
      * @param bool $matching
