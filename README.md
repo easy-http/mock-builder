@@ -4,13 +4,13 @@
 
 A fluid interface to build HTTP mocks. You can use this library to build mocks for Guzzle, Symfony and other HTTP Clients.
 
-# Requirements
+# :pencil: Requirements
 
 This library requires the following dependencies
 
 - Guzzle v7.0 or later
 
-# Installation
+# :wrench: Installation
 
 Use following command to install this library:
 
@@ -18,7 +18,7 @@ Use following command to install this library:
 composer require easy-http/mock-builder
 ```
 
-# Usage
+# :bulb: Usage
 
 ## Creating a simple Mock for Guzzle
 
@@ -46,48 +46,119 @@ $client
 
 ## Expectations
 
-`methodIs(string $method)`
+### methodIs
 
 Expects for a method.
 
-### URL
+```php
+$builder
+    ->when()
+        ->methodIs('POST')
+    ->then()
+        ...
+```
 
-There are a few expectations for URL components. Remember a URL is a Uniform Resource Locator
-that locates an existing resource on the Internet. A URL for HTTP (or HTTPS) is normally made up of three or four components:
-
-- A schema
-- A host
-- A path
-- A query string
-
-In this way, you can use the following expectations for URL matching.
-
-`queryParamIs(string $key, string $value)`
+### queryParamIs
 
 Expects for a query parameter with specific value (for example term=bluebird).
 
-`queryParamExists(string $param)`
+```php
+$builder
+    ->when()
+        ->queryParamIs('page', '5')
+    ->then()
+        ...
+```
+
+### queryParamExists
 
 Expects a query parameter exists.
 
-`queryParamNotExists(string $param)`
+```php
+$builder
+    ->when()
+        ->queryParamExists('pages')
+    ->then()
+        ...
+```
+
+### queryParamNotExists
 
 Expects a query parameter does not exists.
 
-`queryParamsAre(array $params)`
+```php
+$builder
+    ->when()
+        ->queryParamNotExists('pages')
+    ->then()
+        ...
+```
+
+### queryParamsAre
 
 Expects for a query parameter set with specific values.
 
-`queryParamsExists(array $params)`
+```php
+$builder
+    ->when()
+        ->queryParamsAre([
+            'pages' => '30',
+            'npage' => '5'
+        ])
+    ->then()
+        ...
+```
+
+### queryParamsExists
 
 Expects a query parameter set exists.
 
-`queryParamsNotExists(array $params)`
+```php
+$builder
+    ->when()
+        ->queryParamsExists([
+            'pages',
+            'npage'
+        ])
+    ->then()
+        ...
+```
+
+### queryParamsNotExists
 
 Expects a query parameter set does not exists.
 
-### Headers
+```php
+$builder
+    ->when()
+        ->queryParamsNotExists([
+            'pages',
+            'npage'
+        ])
+    ->then()
+        ...
+```
 
-`headerIs(string $key, string $value)`
+### headerIs
 
 Expects for a header with specific value (for example Content-Type: text/html).
+
+```php
+$builder
+    ->when()
+        ->headerIs('Content-Type', 'text/html')
+    ->then()
+        ...
+```
+
+###  headerExists
+
+Expects a header exists.
+
+```php
+$builder
+    ->when()
+        ->headerExists('Authorization')
+    ->then()
+        ...
+```
