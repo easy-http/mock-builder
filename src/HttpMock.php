@@ -4,6 +4,7 @@ namespace EasyHttp\MockBuilder;
 
 use EasyHttp\MockBuilder\Expectations\HeaderExistsExpectation;
 use EasyHttp\MockBuilder\Expectations\HeaderIsExpectation;
+use EasyHttp\MockBuilder\Expectations\HeaderNotExistsExpectation;
 use EasyHttp\MockBuilder\Expectations\MethodIsExpectation;
 use EasyHttp\MockBuilder\Expectations\ParamExistsExpectation;
 use EasyHttp\MockBuilder\Expectations\ParamIsExpectation;
@@ -37,6 +38,7 @@ class HttpMock
                 ->then(ParamNotExistsExpectation::from($expectation))
                 ->then(HeaderIsExpectation::from($expectation))
                 ->then(HeaderExistsExpectation::from($expectation))
+                ->then(HeaderNotExistsExpectation::from($expectation))
                 ->otherwise(
                     function() use (&$matches) {
                         $matches = false;
