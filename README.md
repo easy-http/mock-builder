@@ -221,7 +221,7 @@ It expects a headers set does not exists.
 ```php
 $builder
     ->when()
-        ->headersExists([
+        ->headersNotExists([
             'Authorization',
             'Content-Type'
         ])
