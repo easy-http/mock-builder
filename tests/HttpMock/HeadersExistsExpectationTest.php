@@ -8,13 +8,13 @@ use EasyHttp\MockBuilder\MockBuilder;
 use EasyHttp\MockBuilder\Tests\HttpMock\Concerns\HasParametersProvider;
 use PHPUnit\Framework\TestCase;
 
-class HeadersNotExistsExpectationTest extends TestCase
+class HeadersExistsExpectationTest extends TestCase
 {
     use HasParametersProvider;
 
     /**
      * @test
-     * @dataProvider notExistingParamsProvider
+     * @dataProvider existingParamsProvider
      * @param array $expectation
      * @param array $headers
      * @param bool $matching
@@ -24,7 +24,7 @@ class HeadersNotExistsExpectationTest extends TestCase
         $builder = new MockBuilder();
         $when = $builder->when();
 
-        $when->headersNotExists($expectation);
+        $when->headersExists($expectation);
 
         $when->then()->body('Hello World!');
         $mock = new HttpMock($builder);

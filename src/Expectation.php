@@ -131,6 +131,15 @@ class Expectation implements QueryParameterAggregate, HeaderAggregate
         return $this;
     }
 
+    public function headersNotExists(array $headers): self
+    {
+        array_walk($headers, function($value) {
+            $this->headerNotExists($value);
+        });
+
+        return $this;
+    }
+
     public function notEmptyQueryParamsIterator(): NotEmptyArrayValuesIterator
     {
         return new NotEmptyArrayValuesIterator($this->queryParams);
