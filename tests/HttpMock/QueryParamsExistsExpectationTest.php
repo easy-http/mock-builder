@@ -8,7 +8,7 @@ use EasyHttp\MockBuilder\MockBuilder;
 use EasyHttp\MockBuilder\Tests\HttpMock\Concerns\HasQueryParametersProvider;
 use PHPUnit\Framework\TestCase;
 
-class QueryParamExistsExpectationTest extends TestCase
+class QueryParamsExistsExpectationTest extends TestCase
 {
     use HasQueryParametersProvider;
 
@@ -24,9 +24,7 @@ class QueryParamExistsExpectationTest extends TestCase
         $builder = new MockBuilder();
         $when = $builder->when();
 
-        foreach ($expectation as $param) {
-            $when->queryParamExists($param);
-        }
+        $when->queryParamsExists($expectation);
 
         $when->then()->body('Hello World!');
         $mock = new HttpMock($builder);
