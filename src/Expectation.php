@@ -15,6 +15,7 @@ class Expectation implements QueryParameterAggregate, HeaderAggregate
     protected ResponseBuilder $responseBuilder;
 
     private string $method;
+    private string $path;
     private array $queryParams = [];
     private array $missingQueryParams = [];
     private array $headers = [];
@@ -37,9 +38,21 @@ class Expectation implements QueryParameterAggregate, HeaderAggregate
         return $this->method ?? null;
     }
 
+    public function getPath(): ?string
+    {
+        return $this->path ?? null;
+    }
+
     public function methodIs(string $method): self
     {
         $this->method = $method;
+
+        return $this;
+    }
+
+    public function pathIs(string $path): self
+    {
+        $this->path = $path;
 
         return $this;
     }
