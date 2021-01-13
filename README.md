@@ -162,3 +162,15 @@ $builder
     ->then()
         ...
 ```
+
+###  headerNotExists
+
+Expects a header does not exist.
+
+```php
+$builder
+    ->when()
+        ->headerNotExists('Authorization')
+    ->then()
+        ...
+```
