@@ -57,7 +57,7 @@ class Expectation implements QueryParameterAggregate
 
     public function queryParamNotExists(string $key): self
     {
-        $this->missingQueryParams[$key] = null;
+        $this->missingQueryParams[] = $key;
 
         return $this;
     }
