@@ -2,6 +2,7 @@
 
 namespace EasyHttp\MockBuilder;
 
+use EasyHttp\MockBuilder\Contracts\HeaderAggregate;
 use EasyHttp\MockBuilder\Contracts\QueryParameterAggregate;
 use EasyHttp\MockBuilder\Contracts\ResponseBuilder;
 use EasyHttp\MockBuilder\Iterators\ArrayIterator;
@@ -9,13 +10,14 @@ use EasyHttp\MockBuilder\Iterators\NotEmptyArrayValuesIterator;
 use EasyHttp\MockBuilder\Iterators\EmptyArrayValuesIterator;
 use EasyHttp\MockBuilder\ResponseBuilders\GuzzleResponseBuilder;
 
-class Expectation implements QueryParameterAggregate
+class Expectation implements QueryParameterAggregate, HeaderAggregate
 {
     protected ResponseBuilder $responseBuilder;
 
     private string $method;
     private array $queryParams = [];
     private array $missingQueryParams = [];
+    private array $headers = [];
 
     public function then(): ResponseBuilder
     {
@@ -90,6 +92,13 @@ class Expectation implements QueryParameterAggregate
         return $this;
     }
 
+    public function headerIs(string $key, string $value): self
+    {
+        $this->headers[$key] = $value;
+
+        return $this;
+    }
+
     public function notEmptyQueryParamsIterator(): NotEmptyArrayValuesIterator
     {
         return new NotEmptyArrayValuesIterator($this->queryParams);
@@ -103,5 +112,10 @@ class Expectation implements QueryParameterAggregate
     public function missingQueryParamsIterator(): ArrayIterator
     {
         return new ArrayIterator($this->missingQueryParams);
+    }
+
+    public function notEmptyHeadersIterator(): NotEmptyArrayValuesIterator
+    {
+        return new NotEmptyArrayValuesIterator($this->headers);
     }
 }
