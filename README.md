@@ -46,6 +46,11 @@ $client
 
 ## Expectations
 
+| Method                     | URL                                       |
+|----------------------------|-------------------------------------------|
+| [methodIs](#methodIs)      | [queryParamIs](#queryParamIs)             |
+|                            | [queryParamExists](#queryParamExists)     |
+
 ### methodIs
 
 Expects for a method.
@@ -151,7 +156,7 @@ $builder
         ...
 ```
 
-###  headerExists
+### headerExists
 
 Expects a header exists.
 
@@ -163,7 +168,7 @@ $builder
         ...
 ```
 
-###  headerNotExists
+### headerNotExists
 
 Expects a header does not exist.
 
@@ -171,6 +176,21 @@ Expects a header does not exist.
 $builder
     ->when()
         ->headerNotExists('Authorization')
+    ->then()
+        ...
+```
+
+### headersAre
+
+Expects for a header set with specific values.
+
+```php
+$builder
+    ->when()
+        ->headersAre([
+            'Authorization' => 'Bearer YourToken',
+            'Content-Type' => 'application/json'
+        ])
     ->then()
         ...
 ```
