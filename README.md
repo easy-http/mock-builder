@@ -46,10 +46,14 @@ $client
 
 ## Expectations
 
-| Method                     | URL                                       |
-|----------------------------|-------------------------------------------|
-| [methodIs](#methodIs)      | [queryParamIs](#queryParamIs)             |
-|                            | [queryParamExists](#queryParamExists)     |
+| Method                     | URL                                          | Headers                               |
+|----------------------------|----------------------------------------------|---------------------------------------|
+| [methodIs](#methodIs)      | [queryParamIs](#queryParamIs)                | [headerIs](#headerIs)                 |
+|                            | [queryParamExists](#queryParamExists)        | [headerExists](#headerExists)         |
+|                            | [queryParamNotExists](#queryParamNotExists)  | [headerNotExists](#headerNotExists)   |
+|                            | [queryParamNotExists](#queryParamsAre)       | [headersAre](#headersAre)             |
+|                            | [queryParamNotExists](#queryParamsExists)    |                                       |
+|                            | [queryParamNotExists](#queryParamsNotExists) |                                       |
 
 ### methodIs
 
