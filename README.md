@@ -85,3 +85,9 @@ Expects a query parameter set exists.
 `queryParamsNotExists(array $params)`
 
 Expects a query parameter set does not exists.
+
+### Headers
+
+`headerIs(string $key, string $value)`
+
+Expects for a header with specific value (for example Content-Type: text/html).
