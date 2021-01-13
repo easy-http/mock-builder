@@ -2,7 +2,7 @@
 
 namespace EasyHttp\MockBuilder\Iterators;
 
-class EmptyQueryParamsIterator extends ArrayIterator
+class NotEmptyArrayValuesIterator extends ArrayIterator
 {
     public function __construct(array $collection)
     {
@@ -13,7 +13,7 @@ class EmptyQueryParamsIterator extends ArrayIterator
     private function filterNotNullParameters(array &$collection)
     {
         $collection = array_filter($collection, function($value) {
-            return empty($value);
+            return !empty($value);
         });
     }
 }

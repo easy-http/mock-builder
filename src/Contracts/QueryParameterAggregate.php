@@ -2,11 +2,13 @@
 
 namespace EasyHttp\MockBuilder\Contracts;
 
-use EasyHttp\MockBuilder\Iterators\NotEmptyQueryParamsIterator;
-use EasyHttp\MockBuilder\Iterators\EmptyQueryParamsIterator;
+use EasyHttp\MockBuilder\Iterators\ArrayIterator;
+use EasyHttp\MockBuilder\Iterators\NotEmptyArrayValuesIterator;
+use EasyHttp\MockBuilder\Iterators\EmptyArrayValuesIterator;
 
 interface QueryParameterAggregate
 {
-    public function notEmptyQueryParamsIterator(): NotEmptyQueryParamsIterator;
-    public function emptyQueryParamsIterator(): EmptyQueryParamsIterator;
+    public function notEmptyQueryParamsIterator(): NotEmptyArrayValuesIterator;
+    public function emptyQueryParamsIterator(): EmptyArrayValuesIterator;
+    public function missingQueryParamsIterator(): ArrayIterator;
 }
