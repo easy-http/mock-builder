@@ -8,13 +8,13 @@ use EasyHttp\MockBuilder\MockBuilder;
 use EasyHttp\MockBuilder\Tests\HttpMock\Concerns\HasParametersProvider;
 use PHPUnit\Framework\TestCase;
 
-class MethodExistsExpectationTest extends TestCase
+class HeadersAreExpectationTest extends TestCase
 {
     use HasParametersProvider;
 
     /**
      * @test
-     * @dataProvider existingParamsProvider
+     * @dataProvider paramsProvider
      * @param array $expectation
      * @param array $headers
      * @param bool $matching
@@ -22,13 +22,12 @@ class MethodExistsExpectationTest extends TestCase
     public function itMatchesQueryParams(array $expectation, array $headers, bool $matching)
     {
         $builder = new MockBuilder();
-        $when = $builder->when();
+        $builder
+            ->when()
+                ->headersAre($expectation)
+            ->then()
+                ->body('Hello World!');
 
-        foreach ($expectation as $param) {
-            $when->headerExists($param);
-        }
-
-        $when->then()->body('Hello World!');
         $mock = new HttpMock($builder);
 
         $client = new GuzzleClient();
