@@ -9,6 +9,7 @@ use EasyHttp\MockBuilder\Expectations\MethodIsExpectation;
 use EasyHttp\MockBuilder\Expectations\ParamExistsExpectation;
 use EasyHttp\MockBuilder\Expectations\ParamIsExpectation;
 use EasyHttp\MockBuilder\Expectations\ParamNotExistsExpectation;
+use EasyHttp\MockBuilder\Expectations\PathIsExpectation;
 use GuzzleHttp\Promise\FulfilledPromise;
 use GuzzleHttp\Promise\Promise;
 use GuzzleHttp\Psr7\Response;
@@ -33,6 +34,7 @@ class HttpMock
             });
             $promise
                 ->then(MethodIsExpectation::from($expectation))
+                ->then(PathIsExpectation::from($expectation))
                 ->then(ParamIsExpectation::from($expectation))
                 ->then(ParamExistsExpectation::from($expectation))
                 ->then(ParamNotExistsExpectation::from($expectation))
