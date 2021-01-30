@@ -246,8 +246,8 @@ $builder
 
 The following are all methods you can use to set up your HTTP response.
 
-[body](#body)
-[json](#json)
+- [body](#body)
+- [json](#json)
 
 ### body
 
