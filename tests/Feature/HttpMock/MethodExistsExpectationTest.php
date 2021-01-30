@@ -1,41 +1,43 @@
 <?php
 
-namespace EasyHttp\MockBuilder\Tests\HttpMock;
+namespace EasyHttp\MockBuilder\Tests\Feature\HttpMock;
 
 use EasyHttp\GuzzleLayer\GuzzleClient;
 use EasyHttp\MockBuilder\HttpMock;
 use EasyHttp\MockBuilder\MockBuilder;
-use EasyHttp\MockBuilder\Tests\HttpMock\Concerns\HasParametersProvider;
+use EasyHttp\MockBuilder\Tests\Feature\HttpMock\Concerns\HasParametersProvider;
 use PHPUnit\Framework\TestCase;
 
-class QueryParamIsExpectationTest extends TestCase
+class MethodExistsExpectationTest extends TestCase
 {
     use HasParametersProvider;
 
     /**
      * @test
-     * @dataProvider paramsProvider
+     * @dataProvider existingParamsProvider
      * @param array $expectation
-     * @param array $query
+     * @param array $headers
      * @param bool $matching
      */
-    public function itMatchesQueryParams(array $expectation, array $query, bool $matching)
+    public function itMatchesQueryParams(array $expectation, array $headers, bool $matching)
     {
         $builder = new MockBuilder();
         $when = $builder->when();
 
-        foreach ($expectation as $key => $value) {
-            $when->queryParamIs($key, $value);
+        foreach ($expectation as $param) {
+            $when->headerExists($param);
         }
 
         $when->then()->body('Hello World!');
         $mock = new HttpMock($builder);
 
         $client = new GuzzleClient();
-        $client->withHandler($mock)
-            ->prepareRequest('POST', '/foo')
-            ->getRequest()
-            ->setQuery($query);
+        $client->withHandler($mock)->prepareRequest('POST', '/foo');
+
+        foreach ($headers as $key => $value) {
+            $client->getRequest()->setHeader($key, $value);
+        }
+
         $response = $client->execute();
 
         if ($matching) {
