@@ -40,7 +40,7 @@ $mock = new HttpMock($builder);
 
 $client = new Client(['handler' => HandlerStack::create($mock)]);
 $client
-    ->post('foo')
+    ->post('/v1/products')
     ->getBody()
     ->getContents(); // bar
 ```
