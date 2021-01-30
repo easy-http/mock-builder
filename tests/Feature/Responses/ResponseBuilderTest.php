@@ -17,7 +17,7 @@ class ResponseBuilderTest extends TestCase
      * @dataProvider statusCodesProvider
      * @param int $statusCode
      */
-    public function itReturnsAssignedStatusCode(int $statusCode)
+    public function itSetsStatusCodeResponse(int $statusCode)
     {
         $builder = new MockBuilder();
         $builder->when()->then()->statusCode($statusCode);
@@ -34,7 +34,7 @@ class ResponseBuilderTest extends TestCase
     /**
      * @test
      */
-    public function itReturnsAssignedBody()
+    public function itSetsBodyResponse()
     {
         $builder = new MockBuilder();
         $builder->when()->then()->body('Hello World');
@@ -51,7 +51,7 @@ class ResponseBuilderTest extends TestCase
     /**
      * @test
      */
-    public function itReturnsAssignedJson()
+    public function itSetsJsonResponse()
     {
         $builder = new MockBuilder();
         $builder->when()->then()->json(['foo' => 'bar']);
