@@ -10,14 +10,14 @@ class GuzzleResponseBuilder implements ResponseBuilder
 {
     private int $statusCode = 200;
     private array $headers = [];
-    private string $body;
+    private ?string $body;
 
     public function getBody(): ?string
     {
-        return $this->body ?? null;
+        return $this->body;
     }
 
-    public function body(string $body): self
+    public function body(?string $body): self
     {
         $this->body = $body;
 
