@@ -1,6 +1,6 @@
 <?php
 
-namespace EasyHttp\MockBuilder\Tests\Feature\HttpMock;
+namespace EasyHttp\MockBuilder\Tests\Feature\Expectations;
 
 use EasyHttp\MockBuilder\HttpMock;
 use EasyHttp\MockBuilder\MockBuilder;
