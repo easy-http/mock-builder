@@ -31,6 +31,7 @@ use GuzzleHttp\Client;
 $builder = new MockBuilder();
 $builder
     ->when()
+        ->pathIs('/v1/products')
         ->methodIs('POST')
     ->then()
         ->body('bar');
@@ -46,14 +47,26 @@ $client
 
 ## Expectations
 
-| Method                     | URL                                           | Headers                               |
+| General                    | URL                                           | Headers                               |
 |----------------------------|-----------------------------------------------|---------------------------------------|
-| [methodIs](#methodIs)      | [queryParamIs](#queryParamIs)                 | [headerIs](#headerIs)                 |
-|                            | [queryParamExists](#queryParamExists)         | [headerExists](#headerExists)         |
+| [pathIs](#pathIs)          | [queryParamIs](#queryParamIs)                 | [headerIs](#headerIs)                 |
+| [methodIs](#methodIs)      | [queryParamExists](#queryParamExists)         | [headerExists](#headerExists)         |
 |                            | [queryParamNotExists](#queryParamNotExists)   | [headerNotExists](#headerNotExists)   |
 |                            | [queryParamsAre](#queryParamsAre)             | [headersAre](#headersAre)             |
 |                            | [queryParamsExists](#queryParamsExists)       | [headersExists](#headersExists)       |
 |                            | [queryParamsNotExists](#queryParamsNotExists) | [headersNotExists](#headersNotExists) |
+
+### pathIs
+
+It expects for a path.
+
+```php
+$builder
+    ->when()
+        ->pathIs('/v1/products')
+    ->then()
+        ...
+```
 
 ### methodIs
 
