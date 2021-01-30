@@ -246,8 +246,21 @@ $builder
 
 The following are all methods you can use to set up your HTTP response.
 
+- [statusCode](#statusCode)
 - [body](#body)
 - [json](#json)
+
+### statusCode
+
+It sets the status code.
+
+```php
+$builder
+    ->when()
+        ...
+    ->then()
+        ->statusCode(500);
+```
 
 ### body
 
