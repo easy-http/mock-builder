@@ -1,11 +1,11 @@
 <?php
 
-namespace EasyHttp\MockBuilder\Tests\Feature\HttpMock;
+namespace EasyHttp\MockBuilder\Tests\Feature\Expectations;
 
 use EasyHttp\GuzzleLayer\GuzzleClient;
 use EasyHttp\MockBuilder\HttpMock;
 use EasyHttp\MockBuilder\MockBuilder;
-use EasyHttp\MockBuilder\Tests\Feature\HttpMock\Concerns\HasParametersProvider;
+use EasyHttp\MockBuilder\Tests\Feature\Expectations\Concerns\HasParametersProvider;
 use PHPUnit\Framework\TestCase;
 
 class MethodExistsExpectationTest extends TestCase

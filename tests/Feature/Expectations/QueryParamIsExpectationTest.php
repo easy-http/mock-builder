@@ -1,20 +1,20 @@
 <?php
 
-namespace EasyHttp\MockBuilder\Tests\Feature\HttpMock;
+namespace EasyHttp\MockBuilder\Tests\Feature\Expectations;
 
 use EasyHttp\GuzzleLayer\GuzzleClient;
 use EasyHttp\MockBuilder\HttpMock;
 use EasyHttp\MockBuilder\MockBuilder;
-use EasyHttp\MockBuilder\Tests\Feature\HttpMock\Concerns\HasParametersProvider;
+use EasyHttp\MockBuilder\Tests\Feature\Expectations\Concerns\HasParametersProvider;
 use PHPUnit\Framework\TestCase;
 
-class QueryParamsExistsExpectationTest extends TestCase
+class QueryParamIsExpectationTest extends TestCase
 {
     use HasParametersProvider;
 
     /**
      * @test
-     * @dataProvider existingParamsProvider
+     * @dataProvider paramsProvider
      * @param array $expectation
      * @param array $query
      * @param bool $matching
@@ -24,7 +24,9 @@ class QueryParamsExistsExpectationTest extends TestCase
         $builder = new MockBuilder();
         $when = $builder->when();
 
-        $when->queryParamsExists($expectation);
+        foreach ($expectation as $key => $value) {
+            $when->queryParamIs($key, $value);
+        }
 
         $when->then()->body('Hello World!');
         $mock = new HttpMock($builder);

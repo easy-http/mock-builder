@@ -1,6 +1,6 @@
 <?php
 
-namespace EasyHttp\MockBuilder\Tests\Feature\HttpMock\Concerns;
+namespace EasyHttp\MockBuilder\Tests\Feature\Expectations\Concerns;
 
 trait HasParametersProvider
 {
