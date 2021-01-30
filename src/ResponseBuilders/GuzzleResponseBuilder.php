@@ -10,15 +10,27 @@ class GuzzleResponseBuilder implements ResponseBuilder
 {
     private int $statusCode = 200;
     private array $headers = [];
-    private ?string $body;
+    private string $body = '';
     private array $json = [];
 
-    public function getBody(): ?string
+    public function statusCode(int $statusCode): self
+    {
+        $this->statusCode = $statusCode;
+
+        return $this;
+    }
+
+    public function getStatusCode(): int
+    {
+        return $this->statusCode;
+    }
+
+    public function getBody(): string
     {
         return $this->body;
     }
 
-    public function body(?string $body): self
+    public function body(string $body): self
     {
         $this->body = $body;
         $this->json = [];
@@ -33,7 +45,7 @@ class GuzzleResponseBuilder implements ResponseBuilder
 
     public function json(array $json): self
     {
-        $this->body = null;
+        $this->body = '';
         $this->json = $json;
 
         return $this;
