@@ -241,3 +241,34 @@ $builder
     ->then()
         ...
 ```
+
+## Responses
+
+The following are all methods you can use to set up your HTTP response.
+
+[body](#body)
+[json](#json)
+
+### body
+
+It sets the body.
+
+```php
+$builder
+    ->when()
+        ...
+    ->then()
+        ->body('hello world');
+```
+
+### json
+
+It sets the json response.
+
+```php
+$builder
+    ->when()
+        ...
+    ->then()
+        ->json(['foo' => 'bar']);
+```
