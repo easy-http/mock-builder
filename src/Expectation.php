@@ -80,27 +80,36 @@ class Expectation implements QueryParameterAggregate, HeaderAggregate
 
     public function queryParamsAre(array $params): self
     {
-        array_walk($params, function($value, $key) {
-            $this->queryParamIs($key, $value);
-        });
+        array_walk(
+            $params,
+            function ($value, $key) {
+                $this->queryParamIs($key, $value);
+            }
+        );
 
         return $this;
     }
 
     public function queryParamsExists(array $params): self
     {
-        array_walk($params, function($value) {
-            $this->queryParamExists($value);
-        });
+        array_walk(
+            $params,
+            function ($value) {
+                $this->queryParamExists($value);
+            }
+        );
 
         return $this;
     }
 
     public function queryParamsNotExists(array $params): self
     {
-        array_walk($params, function($value) {
-            $this->queryParamNotExists($value);
-        });
+        array_walk(
+            $params,
+            function ($value) {
+                $this->queryParamNotExists($value);
+            }
+        );
 
         return $this;
     }
@@ -128,27 +137,36 @@ class Expectation implements QueryParameterAggregate, HeaderAggregate
 
     public function headersAre(array $headers): self
     {
-        array_walk($headers, function($value, $key) {
-            $this->headerIs($key, $value);
-        });
+        array_walk(
+            $headers,
+            function ($value, $key) {
+                $this->headerIs($key, $value);
+            }
+        );
 
         return $this;
     }
 
     public function headersExists(array $headers): self
     {
-        array_walk($headers, function($value) {
-            $this->headerExists($value);
-        });
+        array_walk(
+            $headers,
+            function ($value) {
+                $this->headerExists($value);
+            }
+        );
 
         return $this;
     }
 
     public function headersNotExists(array $headers): self
     {
-        array_walk($headers, function($value) {
-            $this->headerNotExists($value);
-        });
+        array_walk(
+            $headers,
+            function ($value) {
+                $this->headerNotExists($value);
+            }
+        );
 
         return $this;
     }

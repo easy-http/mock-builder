@@ -12,8 +12,11 @@ class NotEmptyArrayValuesIterator extends ArrayIterator
 
     private function filterNotNullParameters(array &$collection)
     {
-        $collection = array_filter($collection, function($value) {
-            return !empty($value);
-        });
+        $collection = array_filter(
+            $collection,
+            function ($value) {
+                return !empty($value);
+            }
+        );
     }
 }
