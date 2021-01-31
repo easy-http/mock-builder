@@ -2,7 +2,7 @@
 
 # Mock builder
 
-A fluid interface to build HTTP mocks. You can use this library to build mocks for Guzzle, Symfony and other HTTP Clients.
+A fluid interface to build HTTP mocks with an expressive syntax. You can use this library to build mocks for Guzzle, Symfony and other HTTP Clients.
 
 # :pencil: Requirements
 
