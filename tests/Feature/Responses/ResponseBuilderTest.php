@@ -34,6 +34,29 @@ class ResponseBuilderTest extends TestCase
     /**
      * @test
      */
+    public function itSetsHeaders()
+    {
+        $builder = new MockBuilder();
+        $builder->when()->then()->headers([
+            'foo' => 'bar',
+            'bar' => 'baz'
+        ]);
+        $mock = new HttpMock($builder);
+
+        $client = new GuzzleClient();
+        $client->withHandler($mock)->prepareRequest('POST', '/foo');
+
+        $response = $client->execute();
+
+        $this->assertSame([
+            'foo' => 'bar',
+            'bar' => 'baz'
+        ], $response->getHeaders());
+    }
+
+    /**
+     * @test
+     */
     public function itSetsBodyResponse()
     {
         $builder = new MockBuilder();
