@@ -1,5 +1,11 @@
 <p align="center"><img src="https://blog.pleets.org/img/articles/easy-http-logo.png" height="150"></p>
 
+<p align="center">
+<a href="https://travis-ci.com/easy-http/mock-builder"><img src="https://travis-ci.com/easy-http/mock-builder.svg?branch=main" alt="Build Status"></a>
+<a href="https://scrutinizer-ci.com/g/easy-http/mock-builder"><img src="https://img.shields.io/scrutinizer/g/easy-http/mock-builder.svg" alt="Code Quality"></a>
+<a href="https://scrutinizer-ci.com/g/easy-http/mock-builder/?branch=main"><img src="https://scrutinizer-ci.com/g/easy-http/mock-builder/badges/coverage.png?b=main" alt="Code Coverage"></a>
+</p>
+
 # Mock builder
 
 A fluid interface to build HTTP mocks with an expressive syntax. You can use this library to build mocks for Guzzle, Symfony and other HTTP Clients.
