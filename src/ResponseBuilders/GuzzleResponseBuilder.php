@@ -25,6 +25,18 @@ class GuzzleResponseBuilder implements ResponseBuilder
         return $this->statusCode;
     }
 
+    public function headers(array $headers): self
+    {
+        $this->headers = $headers;
+
+        return $this;
+    }
+
+    public function getHeaders(): array
+    {
+        return $this->headers;
+    }
+
     public function getBody(): string
     {
         return $this->body;
