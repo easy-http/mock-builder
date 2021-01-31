@@ -37,10 +37,12 @@ class ResponseBuilderTest extends TestCase
     public function itSetsHeaders()
     {
         $builder = new MockBuilder();
-        $builder->when()->then()->headers([
+        $builder->when()->then()->headers(
+            [
             'foo' => 'bar',
             'bar' => 'baz'
-        ]);
+            ]
+        );
         $mock = new HttpMock($builder);
 
         $client = new GuzzleClient();
@@ -48,10 +50,13 @@ class ResponseBuilderTest extends TestCase
 
         $response = $client->execute();
 
-        $this->assertSame([
+        $this->assertSame(
+            [
             'foo' => 'bar',
             'bar' => 'baz'
-        ], $response->getHeaders());
+            ],
+            $response->getHeaders()
+        );
     }
 
     /**

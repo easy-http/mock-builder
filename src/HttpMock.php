@@ -29,9 +29,11 @@ class HttpMock
         foreach ($this->builder->getExpectations() as $expectation) {
             $matches = true;
 
-            $promise = new Promise(function() use (&$promise, $request) {
-                $promise->resolve($request);
-            });
+            $promise = new Promise(
+                function () use (&$promise, $request) {
+                    $promise->resolve($request);
+                }
+            );
             $promise
                 ->then(MethodIsExpectation::from($expectation))
                 ->then(PathIsExpectation::from($expectation))
@@ -42,10 +44,10 @@ class HttpMock
                 ->then(HeaderExistsExpectation::from($expectation))
                 ->then(HeaderNotExistsExpectation::from($expectation))
                 ->otherwise(
-                    function() use (&$matches) {
+                    function () use (&$matches) {
                         $matches = false;
                     }
-            );
+                );
 
             $promise->wait();
 
