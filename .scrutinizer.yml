@@ -1,0 +1,16 @@
+build:
+  environment:
+    php:
+      version: "7.4"
+  nodes:
+    coverage:
+      tests:
+        override:
+          - command: composer phpunit-xml
+            coverage:
+              file: phpunit.coverage.xml
+              format: clover
+    analysis:
+      tests:
+        override:
+          - php-scrutinizer-run
