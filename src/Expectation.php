@@ -17,8 +17,10 @@ class Expectation implements QueryParameterAggregate, HeaderAggregate
     private string $method;
     private string $path;
     private array $queryParams = [];
-    private array $missingQueryParams = [];
     private array $headers = [];
+
+    private string $pathRegex;
+    private array $missingQueryParams = [];
     private array $missingHeaders = [];
 
     public function then(): ResponseBuilder
@@ -43,6 +45,11 @@ class Expectation implements QueryParameterAggregate, HeaderAggregate
         return $this->path ?? null;
     }
 
+    public function getPathRegex(): ?string
+    {
+        return $this->pathRegex ?? null;
+    }
+
     public function methodIs(string $method): self
     {
         $this->method = $method;
@@ -53,6 +60,13 @@ class Expectation implements QueryParameterAggregate, HeaderAggregate
     public function pathIs(string $path): self
     {
         $this->path = $path;
+
+        return $this;
+    }
+
+    public function pathMatch(string $regex): self
+    {
+        $this->pathRegex = $regex;
 
         return $this;
     }
