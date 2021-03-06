@@ -8,7 +8,7 @@ use EasyHttp\MockBuilder\MockBuilder;
 use EasyHttp\MockBuilder\Tests\Feature\Expectations\Concerns\HasParametersProvider;
 use PHPUnit\Framework\TestCase;
 
-class QueryParamsNotExistsExpectationTest extends TestCase
+class QueryParamsNotExistExpectationTest extends TestCase
 {
     use HasParametersProvider;
 
