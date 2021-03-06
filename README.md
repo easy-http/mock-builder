@@ -65,7 +65,7 @@ $client
 |                                                                                       | [queryParamNotExist](https://github.com/easy-http/mock-builder/wiki/Expectations#queryParamNotExist)     | [headerNotExist](https://github.com/easy-http/mock-builder/wiki/Expectations#headerNotExist)     |
 |                                                                                       | [queryParamsAre](https://github.com/easy-http/mock-builder/wiki/Expectations#queryParamsAre)             | [headersAre](https://github.com/easy-http/mock-builder/wiki/Expectations#headersAre)             |
 |                                                                                       | [queryParamsExist](https://github.com/easy-http/mock-builder/wiki/Expectations#queryParamsExist)         | [headersExist](https://github.com/easy-http/mock-builder/wiki/Expectations#headersExist)         |
-|                                                                                       | [queryParamsNotExist](https://github.com/easy-http/mock-builder/wiki/Expectations#queryParamsNotExist)   | [headersNotExists](https://github.com/easy-http/mock-builder/wiki/Expectations#headersNotExists) |
+|                                                                                       | [queryParamsNotExist](https://github.com/easy-http/mock-builder/wiki/Expectations#queryParamsNotExist)   | [headersNotExist](https://github.com/easy-http/mock-builder/wiki/Expectations#headersNotExist)   |
 
 Expectations for Regex
 
