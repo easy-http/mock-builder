@@ -25,7 +25,7 @@ class HeaderNotExistsExpectationTest extends TestCase
         $when = $builder->when();
 
         foreach ($expectation as $param) {
-            $when->headerNotExists($param);
+            $when->headerNotExist($param);
         }
 
         $when->then()->body('Hello World!');

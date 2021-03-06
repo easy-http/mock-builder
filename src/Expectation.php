@@ -142,7 +142,7 @@ class Expectation implements QueryParameterAggregate, HeaderAggregate
         return $this;
     }
 
-    public function headerNotExists(string $key): self
+    public function headerNotExist(string $key): self
     {
         $this->missingHeaders[] = $key;
 
@@ -178,7 +178,7 @@ class Expectation implements QueryParameterAggregate, HeaderAggregate
         array_walk(
             $headers,
             function ($value) {
-                $this->headerNotExists($value);
+                $this->headerNotExist($value);
             }
         );
 
