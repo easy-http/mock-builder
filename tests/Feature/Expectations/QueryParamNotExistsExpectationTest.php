@@ -25,7 +25,7 @@ class QueryParamNotExistsExpectationTest extends TestCase
         $when = $builder->when();
 
         foreach ($expectation as $param) {
-            $when->queryParamNotExists($param);
+            $when->queryParamNotExist($param);
         }
 
         $when->then()->body('Hello World!');

@@ -85,7 +85,7 @@ class Expectation implements QueryParameterAggregate, HeaderAggregate
         return $this;
     }
 
-    public function queryParamNotExists(string $key): self
+    public function queryParamNotExist(string $key): self
     {
         $this->missingQueryParams[] = $key;
 
@@ -104,7 +104,7 @@ class Expectation implements QueryParameterAggregate, HeaderAggregate
         return $this;
     }
 
-    public function queryParamsExists(array $params): self
+    public function queryParamsExist(array $params): self
     {
         array_walk(
             $params,
@@ -116,12 +116,12 @@ class Expectation implements QueryParameterAggregate, HeaderAggregate
         return $this;
     }
 
-    public function queryParamsNotExists(array $params): self
+    public function queryParamsNotExist(array $params): self
     {
         array_walk(
             $params,
             function ($value) {
-                $this->queryParamNotExists($value);
+                $this->queryParamNotExist($value);
             }
         );
 
@@ -161,7 +161,7 @@ class Expectation implements QueryParameterAggregate, HeaderAggregate
         return $this;
     }
 
-    public function headersExists(array $headers): self
+    public function headersExist(array $headers): self
     {
         array_walk(
             $headers,
@@ -173,7 +173,7 @@ class Expectation implements QueryParameterAggregate, HeaderAggregate
         return $this;
     }
 
-    public function headersNotExists(array $headers): self
+    public function headersNotExist(array $headers): self
     {
         array_walk(
             $headers,

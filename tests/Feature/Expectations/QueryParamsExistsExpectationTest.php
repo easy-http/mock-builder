@@ -24,7 +24,7 @@ class QueryParamsExistsExpectationTest extends TestCase
         $builder = new MockBuilder();
         $when = $builder->when();
 
-        $when->queryParamsExists($expectation);
+        $when->queryParamsExist($expectation);
 
         $when->then()->body('Hello World!');
         $mock = new HttpMock($builder);

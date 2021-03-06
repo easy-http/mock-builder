@@ -24,7 +24,7 @@ class HeadersNotExistsExpectationTest extends TestCase
         $builder = new MockBuilder();
         $when = $builder->when();
 
-        $when->headersNotExists($expectation);
+        $when->headersNotExist($expectation);
 
         $when->then()->body('Hello World!');
         $mock = new HttpMock($builder);
