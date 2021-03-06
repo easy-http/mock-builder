@@ -18,7 +18,7 @@ A fluid interface to build HTTP mocks with an expressive syntax. You can use thi
 
 This library requires the following dependencies
 
-- PHP 7.4
+- PHP 7.4 or PHP 8.0
 - Guzzle v7.0 or later
 
 # :wrench: Installation
