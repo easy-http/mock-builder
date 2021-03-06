@@ -18,6 +18,7 @@ A fluid interface to build HTTP mocks with an expressive syntax. You can use thi
 
 This library requires the following dependencies
 
+- PHP 7.4
 - Guzzle v7.0 or later
 
 # :wrench: Installation
@@ -65,6 +66,10 @@ $client
 |                                                                                       | [queryParamsAre](https://github.com/easy-http/mock-builder/wiki/Expectations#queryParamsAre)             | [headersAre](https://github.com/easy-http/mock-builder/wiki/Expectations#headersAre)             |
 |                                                                                       | [queryParamsExists](https://github.com/easy-http/mock-builder/wiki/Expectations#queryParamsExists)       | [headersExists](https://github.com/easy-http/mock-builder/wiki/Expectations#headersExists)       |
 |                                                                                       | [queryParamsNotExists](https://github.com/easy-http/mock-builder/wiki/Expectations#queryParamsNotExists) | [headersNotExists](https://github.com/easy-http/mock-builder/wiki/Expectations#headersNotExists) |
+
+Expectations for Regex
+
+- [pathMatch](https://github.com/easy-http/mock-builder/wiki/Expectations#pathMatch)
 
 ## Responses
 
