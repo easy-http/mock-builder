@@ -79,7 +79,7 @@ class HeaderIsNotExpectationTest extends TestCase
     /**
      * @test
      */
-    public function itMatchesWithOthersExpectations()
+    public function itMatchesWithOtherExpectations()
     {
         $builder = new MockBuilder();
         $builder
