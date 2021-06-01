@@ -23,6 +23,8 @@ class Expectation implements QueryParameterAggregate, HeaderAggregate
     private array $missingQueryParams = [];
     private array $missingHeaders = [];
 
+    private array $rejectedHeaders = [];
+
     public function then(): ResponseBuilder
     {
         $this->responseBuilder = new GuzzleResponseBuilder();
@@ -135,6 +137,13 @@ class Expectation implements QueryParameterAggregate, HeaderAggregate
         return $this;
     }
 
+    public function headerIsNot(string $key, string $value): self
+    {
+        $this->rejectedHeaders[$key] = $value;
+
+        return $this;
+    }
+
     public function headerExists(string $key): self
     {
         $this->headers[$key] = null;
@@ -213,5 +222,10 @@ class Expectation implements QueryParameterAggregate, HeaderAggregate
     public function missingHeadersIterator(): ArrayIterator
     {
         return new ArrayIterator($this->missingHeaders);
+    }
+
+    public function rejectedHeadersIterator(): ArrayIterator
+    {
+        return new ArrayIterator($this->rejectedHeaders);
     }
 }
