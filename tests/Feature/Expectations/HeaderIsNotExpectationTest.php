@@ -36,10 +36,10 @@ class HeaderIsNotExpectationTest extends TestCase
         $response = $client->execute();
 
         if ($matching) {
-            // match, return expectation
+            // matches, return expectation
             $this->assertSame('Hello World!', $response->getBody());
         } else {
-            // no match, go to fallback response
+            // it doesn't match, return fallback response
             $this->assertSame(404, $response->getStatusCode());
         }
     }
@@ -68,11 +68,11 @@ class HeaderIsNotExpectationTest extends TestCase
         $client->getRequest()->setHeader('Authorization', base64_encode('user:pass'));
         $responseWithAuth = $client->execute();
 
-        // match, return expectation
+        // matches, return expectation
         $this->assertSame(401, $responseWithoutAuth->getStatusCode());
         $this->assertSame('Unauthorized', $responseWithoutAuth->getBody());
 
-        // no match, go to fallback response
+        // it doesn't match, return fallback response
         $this->assertSame(404, $responseWithAuth->getStatusCode());
     }
 
