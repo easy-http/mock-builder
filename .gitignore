@@ -1,5 +1,9 @@
-/vendor/
-.idea/
 composer.lock
-.phpunit.cache
+phpunit.coverage.xml
 .phpunit.result.cache
+.php_cs.cache
+.phpunit.cache
+.idea/
+.scannerwork/
+vendor/
+tests/coverage/
