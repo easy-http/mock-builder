@@ -1,0 +1,138 @@
+name: tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  php-74-guzle-6:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '7.4'
+          coverage: none
+
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Guzzle 6
+        run: composer require guzzlehttp/guzzle:^6.0 --no-interaction
+
+      - name: Install dependencies
+        run: composer install --no-interaction
+
+      - name: Execute tests
+        run: composer tests
+
+  php-74-guzle-7:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '7.4'
+          coverage: none
+
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Guzzle 7
+        run: composer require guzzlehttp/guzzle:^7.0 --no-interaction
+
+      - name: Install dependencies
+        run: composer install --no-interaction
+
+      - name: Execute tests
+        run: composer tests
+
+  php-80-guzle-6:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.0'
+          coverage: none
+
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Guzzle 6
+        run: composer require guzzlehttp/guzzle:^6.0 --no-interaction
+
+      - name: Install dependencies
+        run: composer install --no-interaction
+
+      - name: Execute tests
+        run: composer tests
+
+  php-80-guzle-7:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.0'
+          coverage: none
+
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Guzzle 7
+        run: composer require guzzlehttp/guzzle:^7.0 --no-interaction
+
+      - name: Install dependencies
+        run: composer install --no-interaction
+
+      - name: Execute tests
+        run: composer tests
+
+  php-81-guzle-6:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+          coverage: none
+
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Guzzle 6
+        run: composer require guzzlehttp/guzzle:^6.0 --no-interaction
+
+      - name: Install dependencies
+        run: composer install --no-interaction
+
+      - name: Execute tests
+        run: composer tests
+
+  php-81-guzle-7:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+          coverage: none
+
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Guzzle 7
+        run: composer require guzzlehttp/guzzle:^7.0 --no-interaction
+
+      - name: Install dependencies
+        run: composer install --no-interaction
+
+      - name: Execute tests
+        run: composer tests

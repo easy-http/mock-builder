@@ -1,9 +1,19 @@
 <p align="center"><img src="https://blog.pleets.org/img/articles/easy-http-logo-320.png"></p>
 
 <p align="center">
-<a href="https://travis-ci.com/easy-http/mock-builder"><img src="https://travis-ci.com/easy-http/mock-builder.svg?branch=main" alt="Build Status"></a>
+<a href="https://github.com/easy-http/mock-builder/actions?query=workflow%3Atests"><img src="https://github.com/easy-http/mock-builder/workflows/tests/badge.svg" alt="Build Status"></a>
 <a href="https://scrutinizer-ci.com/g/easy-http/mock-builder"><img src="https://img.shields.io/scrutinizer/g/easy-http/mock-builder.svg" alt="Code Quality"></a>
-<a href="https://scrutinizer-ci.com/g/easy-http/mock-builder/?branch=main"><img src="https://scrutinizer-ci.com/g/easy-http/mock-builder/badges/coverage.png?b=main" alt="Code Coverage"></a>
+<a href="https://sonarcloud.io/summary/overall?id=easy-http_mock-builder"><img src="https://sonarcloud.io/api/project_badges/measure?project=easy-http_mock-builder&metric=coverage" alt="Code Coverage"></a>
+</p>
+<p align="center">
+  <a href="https://stand-with-ukraine.pp.ua" title="#StandWithUkraine"><img alt="#StandWithUkraine" src="https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/badges/StandWithUkraine.svg"></a>
+</p>
+<p align="center">
+    <a href="#tada-php-support" title="PHP Versions Supported"><img alt="PHP Versions Supported" src="https://img.shields.io/badge/php-7.4%20to%208.2-777bb3.svg?logo=php&logoColor=white&labelColor=555555"></a>
+</p>
+
+<p align="center">
+    :rocket: Change easily from one client to another using http layer contracts
 </p>
 
 # Mock builder
@@ -14,12 +24,10 @@ A fluid interface to build HTTP mocks with an expressive syntax. You can use thi
 <a href="https://sonarcloud.io/dashboard?id=easy-http_mock-builder"><img src="https://sonarcloud.io/api/project_badges/measure?project=easy-http_mock-builder&metric=bugs" alt="Bugs"></a>
 <a href="https://sonarcloud.io/dashboard?id=easy-http_mock-builder"><img src="https://sonarcloud.io/api/project_badges/measure?project=easy-http_mock-builder&metric=code_smells" alt="Bugs"></a>
 
-# :pencil: Requirements
+This library supports the following versions of Guzzle Http Client.
 
-This library requires the following dependencies
-
-- PHP 7.4, 8.0
-- Guzzle v6, v7
+<a href="#tada-php-support" title="Guzzle Version Supported"><img alt="PHP Versions Supported" src="https://img.shields.io/badge/guzzle-6.x-blue"></a>
+<a href="#tada-php-support" title="Guzzle Version Supported"><img alt="PHP Versions Supported" src="https://img.shields.io/badge/guzzle-7.x-blue"></a>
 
 # :wrench: Installation
 
