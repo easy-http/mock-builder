@@ -31,6 +31,7 @@ class ArrayIterator implements \Iterator
         reset($this->collection);
     }
 
+    #[\ReturnTypeWillChange]
     public function current()
     {
         return current($this->collection);
