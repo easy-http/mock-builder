@@ -102,6 +102,7 @@ jobs:
         with:
           php-version: '8.1'
           coverage: none
+          ini-values: error_reporting=E_ALL
 
       - name: Checkout code
         uses: actions/checkout@v2
