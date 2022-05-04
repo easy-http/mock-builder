@@ -5,7 +5,7 @@ namespace EasyHttp\MockBuilder\Tests\Feature\Expectations\Concerns;
 trait HasParametersProvider
 {
     /**
-     * This parameters can be use as query parameters or headers
+     * These parameters can be use as query parameters or headers
      *
      * @return array[]
      */
@@ -23,7 +23,7 @@ trait HasParametersProvider
     }
 
     /**
-     * This parameters can be use as query parameters or headers
+     * These parameters can be use as query parameters or headers
      *
      * @return array[]
      */
