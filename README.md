@@ -63,3 +63,5 @@ $client
     ->getBody()
     ->getContents(); // bar
 ```
+
+:books: Check out the [Documentation](https://easy-http.com/docs) to learn how to use this library.
