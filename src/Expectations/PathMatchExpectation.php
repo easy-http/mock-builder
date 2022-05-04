@@ -11,14 +11,17 @@ class PathMatchExpectation
     public static function from(Expectation $expectation): callable
     {
         return function ($request) use ($expectation) {
-            if ($regex = $expectation->getPathRegex()) {
-                /** @var RequestInterface $request */
-                if (!preg_match($regex, $request->getUri()->getPath(), $matches)) {
-                    return new RejectedPromise('path does not match expectation');
-                }
+            /** @var RequestInterface $request */
+            if (!is_null($expectation->getPathRegex()) && !self::matches($expectation, $request)) {
+                return new RejectedPromise('path does not match expectation');
             }
 
             return $request;
         };
+    }
+
+    private static function matches($expectation, $request): bool
+    {
+        return preg_match($expectation->getPathRegex(), $request->getUri()->getPath(), $matches);
     }
 }

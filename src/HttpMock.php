@@ -28,6 +28,8 @@ class HttpMock
 
     public function __invoke(RequestInterface $request): FulfilledPromise
     {
+        $rejectionReason = '';
+
         foreach ($this->builder->getExpectations() as $expectation) {
             $matches = true;
 
@@ -48,7 +50,8 @@ class HttpMock
                 ->then(HeaderExistsExpectation::from($expectation))
                 ->then(HeaderNotExistsExpectation::from($expectation))
                 ->otherwise(
-                    function () use (&$matches) {
+                    function ($reason) use (&$matches, &$rejectionReason) {
+                        $rejectionReason = $reason;
                         $matches = false;
                     }
                 );
@@ -60,13 +63,13 @@ class HttpMock
             }
         }
 
-        return $this->fallbackResponse();
+        return $this->fallbackResponse($rejectionReason);
     }
 
-    private function fallbackResponse(): FulfilledPromise
+    private function fallbackResponse($rejectionReason): FulfilledPromise
     {
         return new FulfilledPromise(
-            new Response(404)
+            new Response(404, [], $rejectionReason)
         );
     }
 }
