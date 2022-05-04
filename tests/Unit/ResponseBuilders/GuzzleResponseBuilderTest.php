@@ -10,6 +10,19 @@ class GuzzleResponseBuilderTest extends TestCase
     /**
      * @test
      */
+    public function itCanSetResponseProperties()
+    {
+        $builder = new GuzzleResponseBuilder();
+        $builder->statusCode(200);
+        $builder->headers(['Content-Type', 'application/json']);
+
+        $this->assertSame(200, $builder->getStatusCode());
+        $this->assertSame(['Content-Type', 'application/json'], $builder->getHeaders());
+    }
+
+    /**
+     * @test
+     */
     public function itSetsBodyInsteadOfJson()
     {
         $builder = new GuzzleResponseBuilder();
