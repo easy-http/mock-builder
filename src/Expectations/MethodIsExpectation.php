@@ -13,7 +13,7 @@ class MethodIsExpectation implements ExpectationMatcher
     {
         return function ($request) use ($expectation) {
             /** @var RequestInterface $request */
-            if ($request->getMethod() !== $expectation->getMethod()) {
+            if (!is_null($expectation->getMethod()) && $request->getMethod() !== $expectation->getMethod()) {
                 return new RejectedPromise('method does not match expectation');
             }
 

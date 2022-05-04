@@ -12,11 +12,16 @@ class PathMatchExpectation
     {
         return function ($request) use ($expectation) {
             /** @var RequestInterface $request */
-            if (!preg_match($expectation->getPathRegex(), $request->getUri()->getPath(), $matches)) {
+            if (!is_null($expectation->getPathRegex()) && !self::matches($expectation, $request)) {
                 return new RejectedPromise('path does not match expectation');
             }
 
             return $request;
         };
+    }
+
+    private static function matches($expectation, $request): bool
+    {
+        return preg_match($expectation->getPathRegex(), $request->getUri()->getPath(), $matches);
     }
 }
