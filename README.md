@@ -13,7 +13,7 @@
 </p>
 
 <p align="center">
-    :rocket: Change easily from one client to another using http layer contracts
+    :rocket: Mock HTTP services
 </p>
 
 # Mock builder
@@ -63,35 +63,3 @@ $client
     ->getBody()
     ->getContents(); // bar
 ```
-
-## Expectations
-
-### Single Value
-
-| General                                                                               | URL                                                                                                      | Headers                                                                                          |
-|---------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------|
-| [pathIs](https://github.com/easy-http/mock-builder/wiki/Expectations#pathIs)          | [queryParamIs](https://github.com/easy-http/mock-builder/wiki/Expectations#queryParamIs)                 | [headerIs](https://github.com/easy-http/mock-builder/wiki/Expectations#headerIs)                 |
-| [methodIs](https://github.com/easy-http/mock-builder/wiki/Expectations#methodIs)      | [queryParamExists](https://github.com/easy-http/mock-builder/wiki/Expectations#queryParamExists)         | [headerIsNot](https://github.com/easy-http/mock-builder/wiki/Expectations#headerIsNot)           |
-|                                                                                       | [queryParamNotExist](https://github.com/easy-http/mock-builder/wiki/Expectations#queryParamNotExist)     | [headerExists](https://github.com/easy-http/mock-builder/wiki/Expectations#headerExists)         |
-|                                                                                       |                                                                                                          | [headerNotExist](https://github.com/easy-http/mock-builder/wiki/Expectations#headerNotExist)     |
-
-### Multi Value
-
-| URL                                                                                                      | Headers                                                                                          |
-|----------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------|
-| [queryParamsAre](https://github.com/easy-http/mock-builder/wiki/Expectations#queryParamsAre)             | [headersAre](https://github.com/easy-http/mock-builder/wiki/Expectations#headersAre)             |
-| [queryParamsExist](https://github.com/easy-http/mock-builder/wiki/Expectations#queryParamsExist)         | [headersExist](https://github.com/easy-http/mock-builder/wiki/Expectations#headersExist)         |
-| [queryParamsNotExist](https://github.com/easy-http/mock-builder/wiki/Expectations#queryParamsNotExist)   | [headersNotExist](https://github.com/easy-http/mock-builder/wiki/Expectations#headersNotExist)   |
-
-Expectations for Regex
-
-- [pathMatch](https://github.com/easy-http/mock-builder/wiki/Expectations#pathMatch)
-
-## Responses
-
-The following are all methods you can use to set up your HTTP response.
-
-- [statusCode](https://github.com/easy-http/mock-builder/wiki/Responses#statusCode)
-- [headers](https://github.com/easy-http/mock-builder/wiki/Responses#headers)
-- [body](https://github.com/easy-http/mock-builder/wiki/Responses#body)
-- [json](https://github.com/easy-http/mock-builder/wiki/Responses#json)
