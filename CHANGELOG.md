@@ -1,6 +1,9 @@
 # Release Notes for 0.x
 
-## [v1.0.0 (2022-05-03)](https://github.com/easy-http/mock-builder/compare/v0.3.0...v1.0.0)
+## [v1.0.0 (2022-05-04)](https://github.com/easy-http/mock-builder/compare/v0.3.0...v1.0.0)
+
+## Added
+- Add rejection reason in fallback response ([#32](https://github.com/easy-http/mock-builder/pull/32))
 
 ### Fixed
 - Deprecation notice for ArrayIterator class ([#29](https://github.com/easy-http/mock-builder/pull/29))
