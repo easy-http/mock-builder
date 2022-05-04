@@ -11,11 +11,9 @@ class PathMatchExpectation
     public static function from(Expectation $expectation): callable
     {
         return function ($request) use ($expectation) {
-            if ($regex = $expectation->getPathRegex()) {
-                /** @var RequestInterface $request */
-                if (!preg_match($regex, $request->getUri()->getPath(), $matches)) {
-                    return new RejectedPromise('path does not match expectation');
-                }
+            /** @var RequestInterface $request */
+            if (!preg_match($expectation->getPathRegex(), $request->getUri()->getPath(), $matches)) {
+                return new RejectedPromise('path does not match expectation');
             }
 
             return $request;

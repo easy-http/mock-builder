@@ -12,11 +12,9 @@ class PathIsExpectation implements ExpectationMatcher
     public static function from(Expectation $expectation): callable
     {
         return function ($request) use ($expectation) {
-            if ($path = $expectation->getPath()) {
-                /** @var RequestInterface $request */
-                if ($request->getUri()->getPath() !== $path) {
-                    return new RejectedPromise('path does not match expectation');
-                }
+            /** @var RequestInterface $request */
+            if ($request->getUri()->getPath() !== $expectation->getPath()) {
+                return new RejectedPromise('path does not match expectation');
             }
 
             return $request;

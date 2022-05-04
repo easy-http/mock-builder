@@ -12,11 +12,9 @@ class MethodIsExpectation implements ExpectationMatcher
     public static function from(Expectation $expectation): callable
     {
         return function ($request) use ($expectation) {
-            if ($method = $expectation->getMethod()) {
-                /** @var RequestInterface $request */
-                if ($request->getMethod() !== $method) {
-                    return new RejectedPromise('method does not match expectation');
-                }
+            /** @var RequestInterface $request */
+            if ($request->getMethod() !== $expectation->getMethod()) {
+                return new RejectedPromise('method does not match expectation');
             }
 
             return $request;
