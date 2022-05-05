@@ -34,7 +34,6 @@ class QueryParamNotExistsExpectationTest extends TestCase
         $client = new GuzzleClient();
         $client->withHandler($mock)
             ->prepareRequest('POST', '/foo')
-            ->getRequest()
             ->setQuery($query);
         $response = $client->execute();
 
@@ -85,7 +84,6 @@ class QueryParamNotExistsExpectationTest extends TestCase
         $client
             ->withHandler($mock)
             ->prepareRequest('POST', 'https://example.com/v2/token')
-            ->getRequest()
             ->setQuery(['foo' => 'baz']);
         $response = $client->execute();
 

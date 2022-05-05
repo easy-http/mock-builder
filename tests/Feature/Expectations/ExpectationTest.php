@@ -14,7 +14,7 @@ class ExpectationTest extends TestCase
      * @dataProvider requestProvider
      * @param array $expectation
      * @param array $request
-     * @param $matching
+     * @param bool $matching
      */
     public function itMatchesExpectedResponse(array $expectation, array $request, bool $matching)
     {
@@ -36,7 +36,6 @@ class ExpectationTest extends TestCase
         $client = new GuzzleClient();
         $client->withHandler($mock)
             ->prepareRequest($request['method'], '/foo')
-            ->getRequest()
             ->setQuery($request['query']);
         $response = $client->execute();
 
