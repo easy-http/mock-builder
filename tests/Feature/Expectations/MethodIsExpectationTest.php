@@ -7,19 +7,19 @@ use EasyHttp\MockBuilder\HttpMock;
 use EasyHttp\MockBuilder\MockBuilder;
 use PHPUnit\Framework\TestCase;
 
-class PathIsExpectationTest extends TestCase
+class MethodIsExpectationTest extends TestCase
 {
     /**
      * @test
      */
-    public function itMatchesSamePath()
+    public function itMatchesMethod()
     {
         $builder = new MockBuilder();
         $builder
             ->when()
-                ->pathIs('/v1/oauth2/token')
+                ->methodIs('POST')
             ->then()
-                ->body('bar');
+                ->body('foo');
 
         $client = new GuzzleClient();
         $mock = new HttpMock($builder);
@@ -28,18 +28,18 @@ class PathIsExpectationTest extends TestCase
             ->withHandler($mock)
             ->call('POST', 'https://example.com/v1/oauth2/token');
 
-        $this->assertSame('bar', $response->getBody());
+        $this->assertSame('foo', $response->getBody());
     }
 
     /**
      * @test
      */
-    public function itDoesNotMatchPath()
+    public function itDoesNotMatchMethod()
     {
         $builder = new MockBuilder();
         $builder
             ->when()
-                ->pathIs('/v1/oauth2/token')
+                ->methodIs('POST')
             ->then()
                 ->body('bar');
 
@@ -48,9 +48,9 @@ class PathIsExpectationTest extends TestCase
         $client = new GuzzleClient();
         $response = $client
             ->withHandler($mock)
-            ->call('POST', 'https://example.com/v2/token');
+            ->call('GET', 'https://example.com/v2/token');
 
         $this->assertSame(404, $response->getStatusCode());
-        $this->assertSame('path \'/v2/token\' does not match expectation', $response->getBody());
+        $this->assertSame('method \'GET\' does not match expectation', $response->getBody());
     }
 }

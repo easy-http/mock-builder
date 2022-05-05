@@ -19,7 +19,7 @@ class QueryParamExistsExpectationTest extends TestCase
      * @param array $query
      * @param bool $matching
      */
-    public function itMatchesQueryParams(array $expectation, array $query, bool $matching)
+    public function itMatchesWhenAQueryParamExists(array $expectation, array $query, bool $matching)
     {
         $builder = new MockBuilder();
         $when = $builder->when();
@@ -43,5 +43,28 @@ class QueryParamExistsExpectationTest extends TestCase
         } else {
             $this->assertSame(404, $response->getStatusCode());
         }
+    }
+
+    /**
+     * @test
+     */
+    public function itDoesNotMatchWhenAQueryParamDoesNotExists()
+    {
+        $builder = new MockBuilder();
+        $builder
+            ->when()
+                ->queryParamExists('foo')
+            ->then()
+                ->body('bar');
+
+        $mock = new HttpMock($builder);
+
+        $client = new GuzzleClient();
+        $response = $client
+            ->withHandler($mock)
+            ->call('POST', 'https://example.com/v2/token');
+
+        $this->assertSame(404, $response->getStatusCode());
+        $this->assertSame('param \'foo\' is missing', $response->getBody());
     }
 }

@@ -46,4 +46,53 @@ class HeaderIsExpectationTest extends TestCase
             $this->assertSame(404, $response->getStatusCode());
         }
     }
+
+    /**
+     * @test
+     */
+    public function itDoesNotMatchWhenHeaderIsMissing()
+    {
+        $builder = new MockBuilder();
+        $builder
+            ->when()
+                ->headerIs('Content-Type', 'application/json')
+            ->then()
+                ->body('bar');
+
+        $mock = new HttpMock($builder);
+
+        $client = new GuzzleClient();
+        $response = $client
+            ->withHandler($mock)
+            ->call('POST', 'https://example.com/v2/token');
+
+        $this->assertSame(404, $response->getStatusCode());
+        $this->assertSame('header \'Content-Type\' is missing', $response->getBody());
+    }
+
+    /**
+     * @test
+     */
+    public function itDoesNotMatchWhenHeaderIsDifferentFromExpectation()
+    {
+        $builder = new MockBuilder();
+        $builder
+            ->when()
+                ->headerIs('Content-Type', 'application/json')
+            ->then()
+                ->body('bar');
+
+        $mock = new HttpMock($builder);
+
+        $client = new GuzzleClient();
+        $client
+            ->withHandler($mock)
+            ->prepareRequest('POST', 'https://example.com/v2/token')
+            ->getRequest()
+            ->setHeader('Content-Type', 'application/html');
+        $response = $client->execute();
+
+        $this->assertSame(404, $response->getStatusCode());
+        $this->assertSame('header \'Content-Type\' does not match expectation', $response->getBody());
+    }
 }

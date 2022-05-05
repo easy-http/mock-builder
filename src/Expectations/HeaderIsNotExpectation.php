@@ -18,7 +18,7 @@ class HeaderIsNotExpectation implements ExpectationMatcher
 
             foreach ($expectation->rejectedHeadersIterator() as $header => $value) {
                 if (array_key_exists($header, $headers) && $headers[$header] === $value) {
-                    return new RejectedPromise('header ' . $header . ' is same from expectation');
+                    return new RejectedPromise('header \'' . $header . '\' is same from expectation');
                 }
             }
 

@@ -16,7 +16,7 @@ class HeaderNotExistsExpectation implements ExpectationMatcher
 
             foreach ($expectation->missingHeadersIterator() as $header) {
                 if ($request->hasHeader($header)) {
-                    return new RejectedPromise('header ' . $header . ' is present');
+                    return new RejectedPromise('header \'' . $header . '\' is present');
                 }
             }
 
