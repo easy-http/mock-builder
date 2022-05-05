@@ -4,6 +4,7 @@
 
 ## Added
 - Add rejection reason in fallback response ([#32](https://github.com/easy-http/mock-builder/pull/32))
+- Improve fallback message in expectations ([#33](https://github.com/easy-http/mock-builder/pull/33))
 
 ### Fixed
 - Deprecation notice for ArrayIterator class ([#29](https://github.com/easy-http/mock-builder/pull/29))

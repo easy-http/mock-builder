@@ -14,7 +14,7 @@ class PathIsExpectation implements ExpectationMatcher
         return function ($request) use ($expectation) {
             /** @var RequestInterface $request */
             if (!is_null($expectation->getPath()) && $request->getUri()->getPath() !== $expectation->getPath()) {
-                return new RejectedPromise('path does not match expectation');
+                return new RejectedPromise('path \'' . $request->getUri()->getPath() . '\' does not match expectation');
             }
 
             return $request;

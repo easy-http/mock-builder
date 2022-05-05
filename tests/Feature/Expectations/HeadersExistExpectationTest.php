@@ -19,7 +19,7 @@ class HeadersExistExpectationTest extends TestCase
      * @param array $headers
      * @param bool $matching
      */
-    public function itMatchesQueryParams(array $expectation, array $headers, bool $matching)
+    public function itMatchesWhenAHeaderExists(array $expectation, array $headers, bool $matching)
     {
         $builder = new MockBuilder();
         $when = $builder->when();
@@ -43,5 +43,28 @@ class HeadersExistExpectationTest extends TestCase
         } else {
             $this->assertSame(404, $response->getStatusCode());
         }
+    }
+
+    /**
+     * @test
+     */
+    public function itDoesNotMatchWhenAHeaderDoesNotExists()
+    {
+        $builder = new MockBuilder();
+        $builder
+            ->when()
+                ->headerExists('Content-Type')
+            ->then()
+                ->body('bar');
+
+        $mock = new HttpMock($builder);
+
+        $client = new GuzzleClient();
+        $response = $client
+            ->withHandler($mock)
+            ->call('POST', 'https://example.com/v2/token');
+
+        $this->assertSame(404, $response->getStatusCode());
+        $this->assertSame('header \'Content-Type\' is missing', $response->getBody());
     }
 }

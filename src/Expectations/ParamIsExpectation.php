@@ -17,11 +17,11 @@ class ParamIsExpectation implements ExpectationMatcher
 
             foreach ($expectation->notEmptyQueryParamsIterator() as $param => $value) {
                 if (!array_key_exists($param, $params)) {
-                    return new RejectedPromise('param ' . $param . ' is not present');
+                    return new RejectedPromise('param \'' . $param . '\' is missing');
                 }
 
                 if ($params[$param] !== $value) {
-                    return new RejectedPromise('param ' . $param . ' is different from expectation');
+                    return new RejectedPromise('param \'' . $param . '\' does not match expectation');
                 }
             }
 

@@ -18,11 +18,11 @@ class HeaderIsExpectation implements ExpectationMatcher
 
             foreach ($expectation->notEmptyHeadersIterator() as $header => $value) {
                 if (!array_key_exists($header, $headers)) {
-                    return new RejectedPromise('header ' . $header . ' is not present');
+                    return new RejectedPromise('header \'' . $header . '\' is missing');
                 }
 
                 if ($headers[$header] !== $value) {
-                    return new RejectedPromise('header ' . $header . ' is different from expectation');
+                    return new RejectedPromise('header \'' . $header . '\' does not match expectation');
                 }
             }
 

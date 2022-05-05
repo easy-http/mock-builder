@@ -44,4 +44,53 @@ class QueryParamIsExpectationTest extends TestCase
             $this->assertSame(404, $response->getStatusCode());
         }
     }
+
+    /**
+     * @test
+     */
+    public function itDoesNotMatchWhenAQueryParamIsMissing()
+    {
+        $builder = new MockBuilder();
+        $builder
+            ->when()
+                ->queryParamIs('foo', 'baz')
+            ->then()
+                ->body('bar');
+
+        $mock = new HttpMock($builder);
+
+        $client = new GuzzleClient();
+        $response = $client
+            ->withHandler($mock)
+            ->call('POST', 'https://example.com/v2/token');
+
+        $this->assertSame(404, $response->getStatusCode());
+        $this->assertSame('param \'foo\' is missing', $response->getBody());
+    }
+
+    /**
+     * @test
+     */
+    public function itDoesNotMatchWhenAQueryParamIsDifferentFromExpectation()
+    {
+        $builder = new MockBuilder();
+        $builder
+            ->when()
+                ->queryParamIs('foo', 'baz')
+            ->then()
+                ->body('bar');
+
+        $mock = new HttpMock($builder);
+
+        $client = new GuzzleClient();
+        $client
+            ->withHandler($mock)
+            ->prepareRequest('POST', 'https://example.com/v2/token')
+            ->getRequest()
+            ->setQuery(['foo' => 'application']);
+        $response = $client->execute();
+
+        $this->assertSame(404, $response->getStatusCode());
+        $this->assertSame('param \'foo\' does not match expectation', $response->getBody());
+    }
 }

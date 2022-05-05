@@ -51,5 +51,6 @@ class PathMatchExpectationTest extends TestCase
             ->call('POST', 'https://example.com/v2/token');
 
         $this->assertSame(404, $response->getStatusCode());
+        $this->assertSame('path \'/v2/token\' does not match expectation', $response->getBody());
     }
 }

@@ -13,7 +13,7 @@ class PathMatchExpectation
         return function ($request) use ($expectation) {
             /** @var RequestInterface $request */
             if (!is_null($expectation->getPathRegex()) && !self::matches($expectation, $request)) {
-                return new RejectedPromise('path does not match expectation');
+                return new RejectedPromise('path \'' . $request->getUri()->getPath() . '\' does not match expectation');
             }
 
             return $request;
