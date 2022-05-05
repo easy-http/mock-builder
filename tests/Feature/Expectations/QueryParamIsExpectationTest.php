@@ -34,7 +34,6 @@ class QueryParamIsExpectationTest extends TestCase
         $client = new GuzzleClient();
         $client->withHandler($mock)
             ->prepareRequest('POST', '/foo')
-            ->getRequest()
             ->setQuery($query);
         $response = $client->execute();
 
@@ -86,7 +85,6 @@ class QueryParamIsExpectationTest extends TestCase
         $client
             ->withHandler($mock)
             ->prepareRequest('POST', 'https://example.com/v2/token')
-            ->getRequest()
             ->setQuery(['foo' => 'application']);
         $response = $client->execute();
 

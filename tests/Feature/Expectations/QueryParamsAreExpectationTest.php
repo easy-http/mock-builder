@@ -33,7 +33,6 @@ class QueryParamsAreExpectationTest extends TestCase
         $client = new GuzzleClient();
         $client->withHandler($mock)
             ->prepareRequest('POST', '/foo')
-            ->getRequest()
             ->setQuery($query);
         $response = $client->execute();
 

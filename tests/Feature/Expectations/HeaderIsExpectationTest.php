@@ -88,7 +88,6 @@ class HeaderIsExpectationTest extends TestCase
         $client
             ->withHandler($mock)
             ->prepareRequest('POST', 'https://example.com/v2/token')
-            ->getRequest()
             ->setHeader('Content-Type', 'application/html');
         $response = $client->execute();
 

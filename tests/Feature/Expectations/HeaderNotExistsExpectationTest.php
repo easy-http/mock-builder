@@ -32,10 +32,10 @@ class HeaderNotExistsExpectationTest extends TestCase
         $mock = new HttpMock($builder);
 
         $client = new GuzzleClient();
-        $client->withHandler($mock)->prepareRequest('POST', '/foo');
+        $request = $client->withHandler($mock)->prepareRequest('POST', '/foo');
 
         foreach ($headers as $key => $value) {
-            $client->getRequest()->setHeader($key, $value);
+            $request->setHeader($key, $value);
         }
 
         $response = $client->execute();
@@ -87,7 +87,6 @@ class HeaderNotExistsExpectationTest extends TestCase
         $client
             ->withHandler($mock)
             ->prepareRequest('POST', 'https://example.com/v2/token')
-            ->getRequest()
             ->setHeader('Content-Type', 'application/json');
         $response = $client->execute();
 

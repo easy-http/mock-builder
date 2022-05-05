@@ -84,7 +84,6 @@ class HeaderIsNotExpectationTest extends TestCase
         $client
             ->withHandler($mock)
             ->prepareRequest('POST', 'https://example.com/v2/token')
-            ->getRequest()
             ->setHeader('Content-Type', 'application/json');
         $response = $client->execute();
 
@@ -111,7 +110,8 @@ class HeaderIsNotExpectationTest extends TestCase
 
         $client = new GuzzleClient();
         $client->withHandler($mock);
-        $responseWithoutAuth = $client->prepareRequest('POST', '/auth')->execute();
+        $client->prepareRequest('POST', '/auth');
+        $responseWithoutAuth = $client->execute();
 
         $client->getRequest()->setHeader('Authorization', base64_encode('user:pass'));
         $responseWithAuth = $client->execute();
@@ -150,9 +150,7 @@ class HeaderIsNotExpectationTest extends TestCase
         $client = new GuzzleClient();
         $client
             ->withHandler(new HttpMock($builder))
-            ->prepareRequest('POST', '/protected');
-        $client
-            ->getRequest()
+            ->prepareRequest('POST', '/protected')
             ->setHeader('Authorization', base64_encode('user:pass'));
         $response = $client->execute();
 
