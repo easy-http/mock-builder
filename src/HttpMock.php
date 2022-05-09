@@ -2,6 +2,7 @@
 
 namespace EasyHttp\MockBuilder;
 
+use EasyHttp\MockBuilder\Expectations\BodyExpectation;
 use EasyHttp\MockBuilder\Expectations\HeaderExistsExpectation;
 use EasyHttp\MockBuilder\Expectations\HeaderIsExpectation;
 use EasyHttp\MockBuilder\Expectations\HeaderIsNotExpectation;
@@ -12,6 +13,7 @@ use EasyHttp\MockBuilder\Expectations\ParamIsExpectation;
 use EasyHttp\MockBuilder\Expectations\ParamNotExistsExpectation;
 use EasyHttp\MockBuilder\Expectations\PathIsExpectation;
 use EasyHttp\MockBuilder\Expectations\PathMatchExpectation;
+use EasyHttp\MockBuilder\Expectations\RequestExpectation;
 use GuzzleHttp\Promise\FulfilledPromise;
 use GuzzleHttp\Promise\Promise;
 use GuzzleHttp\Psr7\Response;
@@ -49,6 +51,8 @@ class HttpMock
                 ->then(HeaderIsNotExpectation::from($expectation))
                 ->then(HeaderExistsExpectation::from($expectation))
                 ->then(HeaderNotExistsExpectation::from($expectation))
+                ->then(BodyExpectation::from($expectation))
+                ->then(RequestExpectation::from($expectation))
                 ->otherwise(
                     function ($reason) use (&$matches, &$rejectionReason) {
                         $rejectionReason = $reason;
@@ -59,7 +63,7 @@ class HttpMock
             $promise->wait();
 
             if ($matches) {
-                return $expectation->responseBuilder()->response();
+                return $expectation->responseBuilder($request)->response();
             }
         }
 
