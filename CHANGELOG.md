@@ -1,5 +1,12 @@
 # Release Notes for 0.x
 
+## [v1.1.0 (2022-05-09)](https://github.com/easy-http/mock-builder/compare/v1.0.0...v1.1.0)
+
+## Added
+- Body callback expectation ([#35](https://github.com/easy-http/mock-builder/pull/35))
+- Request callback expectation ([#35](https://github.com/easy-http/mock-builder/pull/35))
+- Body response defined by a callback ([#35](https://github.com/easy-http/mock-builder/pull/35))
+
 ## [v1.0.0 (2022-05-04)](https://github.com/easy-http/mock-builder/compare/v0.3.0...v1.0.0)
 
 ## Added

@@ -9,6 +9,7 @@ use EasyHttp\MockBuilder\Iterators\ArrayIterator;
 use EasyHttp\MockBuilder\Iterators\NotEmptyArrayValuesIterator;
 use EasyHttp\MockBuilder\Iterators\EmptyArrayValuesIterator;
 use EasyHttp\MockBuilder\ResponseBuilders\GuzzleResponseBuilder;
+use Psr\Http\Message\RequestInterface;
 
 class Expectation implements QueryParameterAggregate, HeaderAggregate
 {
@@ -25,6 +26,9 @@ class Expectation implements QueryParameterAggregate, HeaderAggregate
 
     private array $rejectedHeaders = [];
 
+    private array $bodyHandlers = [];
+    private array $requestHandlers = [];
+
     public function then(): ResponseBuilder
     {
         $this->responseBuilder = new GuzzleResponseBuilder();
@@ -32,8 +36,10 @@ class Expectation implements QueryParameterAggregate, HeaderAggregate
         return $this->responseBuilder;
     }
 
-    public function responseBuilder(): ResponseBuilder
+    public function responseBuilder(?RequestInterface $request = null): ResponseBuilder
     {
+        $this->responseBuilder->setRequest($request);
+
         return $this->responseBuilder;
     }
 
@@ -194,6 +200,20 @@ class Expectation implements QueryParameterAggregate, HeaderAggregate
         return $this;
     }
 
+    public function body(callable $callback): self
+    {
+        $this->bodyHandlers[] = $callback;
+
+        return $this;
+    }
+
+    public function request(callable $callback): self
+    {
+        $this->requestHandlers[] = $callback;
+
+        return $this;
+    }
+
     public function notEmptyQueryParamsIterator(): NotEmptyArrayValuesIterator
     {
         return new NotEmptyArrayValuesIterator($this->queryParams);
@@ -227,5 +247,15 @@ class Expectation implements QueryParameterAggregate, HeaderAggregate
     public function rejectedHeadersIterator(): ArrayIterator
     {
         return new ArrayIterator($this->rejectedHeaders);
+    }
+
+    public function bodyHandlersIterator(): ArrayIterator
+    {
+        return new ArrayIterator($this->bodyHandlers);
+    }
+
+    public function requestHandlersIterator(): ArrayIterator
+    {
+        return new ArrayIterator($this->requestHandlers);
     }
 }
