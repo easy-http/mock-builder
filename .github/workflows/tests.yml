@@ -6,7 +6,7 @@ on:
 
 jobs:
   guzzle6:
-    name: php
+    name: guzzle6
     runs-on: ubuntu-latest
     strategy:
       max-parallel: 10
@@ -35,7 +35,7 @@ jobs:
         run: composer tests
 
   guzzle7:
-    name: php
+    name: guzzle7
     runs-on: ubuntu-latest
     strategy:
       max-parallel: 10
@@ -64,7 +64,7 @@ jobs:
         run: composer tests
 
   promisesv2:
-    name: php
+    name: promisesv2
     runs-on: ubuntu-latest
 
     steps:
