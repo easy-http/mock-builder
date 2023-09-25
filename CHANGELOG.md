@@ -1,12 +1,10 @@
-# Release Notes for 2.x
+# Release Notes for 1.x
 
-## [v2.0.0 (2023-09-22)](https://github.com/easy-http/mock-builder/compare/v1.1.0...v2.0.0)
+## [v1.2.0 (2023-09-24)](https://github.com/easy-http/mock-builder/compare/v1.1.0...v1.2.0)
 
 ## Added
 - Added support guzzlehttp/promises v2 ([#36](https://github.com/easy-http/mock-builder/pull/36), [#71e153ec](https://github.com/easy-http/mock-builder/commit/71e153ecbff090b1210019bf723a2bcfc3e4083b))
 - Added support for  PHP 8.2, 8.3 ([#36](https://github.com/easy-http/mock-builder/pull/36))
-
-# Release Notes for 1.x
 
 ## [v1.1.0 (2022-05-09)](https://github.com/easy-http/mock-builder/compare/v1.0.0...v1.1.0)
 
