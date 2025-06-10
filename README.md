@@ -6,9 +6,6 @@
 <a href="https://sonarcloud.io/summary/overall?id=easy-http_mock-builder"><img src="https://sonarcloud.io/api/project_badges/measure?project=easy-http_mock-builder&metric=coverage" alt="Code Coverage"></a>
 </p>
 <p align="center">
-  <a href="https://stand-with-ukraine.pp.ua" title="#StandWithUkraine"><img alt="#StandWithUkraine" src="https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/badges/StandWithUkraine.svg"></a>
-</p>
-<p align="center">
     <a href="#tada-php-support" title="PHP Versions Supported"><img alt="PHP Versions Supported" src="https://img.shields.io/badge/php-7.4%20to%208.3-777bb3.svg?logo=php&logoColor=white&labelColor=555555"></a>
     <a href="https://packagist.org/packages/easy-http/mock-builder"><img src="https://img.shields.io/packagist/dt/easy-http/mock-builder" alt="Total Downloads"></a>
 </p>
