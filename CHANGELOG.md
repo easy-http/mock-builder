@@ -7,7 +7,7 @@
 - Added SonarQube analysis to CI pipeline using GitHub Actions ([#37](https://github.com/easy-http/mock-builder/pull/37))
 
 ## Removed
-- Removed Scrutinizer from CI/CD pipeline [#4395013b](https://github.com/easy-http/mock-builder/commit/4395013b8afaabb76621c183f073d91bdce7760e)
+- Removed Scrutinizer from CI/CD pipeline ([#4395013b](https://github.com/easy-http/mock-builder/commit/4395013b8afaabb76621c183f073d91bdce7760e))
 
 ## [v1.2.0 (2023-09-24)](https://github.com/easy-http/mock-builder/compare/v1.1.0...v1.2.0)
 
