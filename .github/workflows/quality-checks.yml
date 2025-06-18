@@ -3,7 +3,7 @@ name: quality-checks
 on:
   push:
     branches:
-      - main
+      - 1.x
   pull_request:
     types: [opened, synchronize, reopened]
 

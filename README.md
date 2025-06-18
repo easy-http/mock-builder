@@ -1,9 +1,9 @@
 <p align="center"><img src="https://blog.pleets.org/img/articles/easy-http-logo-320.png"></p>
 
 <p align="center">
-<a href="https://github.com/easy-http/mock-builder/actions?query=workflow%3Atests"><img src="https://github.com/easy-http/mock-builder/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://scrutinizer-ci.com/g/easy-http/mock-builder"><img src="https://img.shields.io/scrutinizer/g/easy-http/mock-builder.svg" alt="Code Quality"></a>
-<a href="https://sonarcloud.io/summary/overall?id=easy-http_mock-builder"><img src="https://sonarcloud.io/api/project_badges/measure?project=easy-http_mock-builder&metric=coverage" alt="Code Coverage"></a>
+<a href="https://github.com/easy-http/mock-builder/actions/workflows/tests.yml"><img src="https://github.com/easy-http/mock-builder/actions/workflows/tests.yml/badge.svg?branch=1.x" alt="Build Status"></a>
+<a href="https://sonarcloud.io/component_measures?metric=reliability_rating&branch=1.x&id=easy-http_mock-builder"><img src="https://sonarcloud.io/api/project_badges/measure?project=easy-http_mock-builder&metric=reliability_rating&branch=1.x" alt="Bugs"></a>
+<a href="https://sonarcloud.io/component_measures?metric=coverage&branch=1.x&id=easy-http_mock-builder"><img src="https://sonarcloud.io/api/project_badges/measure?project=easy-http_mock-builder&metric=coverage&branch=1.x" alt="Bugs"></a>
 </p>
 <p align="center">
     <a href="#tada-php-support" title="PHP Versions Supported"><img alt="PHP Versions Supported" src="https://img.shields.io/badge/php-7.4%20to%208.3-777bb3.svg?logo=php&logoColor=white&labelColor=555555"></a>
@@ -18,9 +18,9 @@
 
 A fluid interface to build HTTP mocks with an expressive syntax. You can use this library to build mocks for Guzzle, Symfony and other HTTP Clients.
 
-<a href="https://sonarcloud.io/dashboard?id=easy-http_mock-builder"><img src="https://sonarcloud.io/api/project_badges/measure?project=easy-http_mock-builder&metric=security_rating" alt="Bugs"></a>
-<a href="https://sonarcloud.io/dashboard?id=easy-http_mock-builder"><img src="https://sonarcloud.io/api/project_badges/measure?project=easy-http_mock-builder&metric=bugs" alt="Bugs"></a>
-<a href="https://sonarcloud.io/dashboard?id=easy-http_mock-builder"><img src="https://sonarcloud.io/api/project_badges/measure?project=easy-http_mock-builder&metric=code_smells" alt="Bugs"></a>
+<a href="https://sonarcloud.io/component_measures?metric=security_rating&branch=1.x&id=easy-http_mock-builder"><img src="https://sonarcloud.io/api/project_badges/measure?project=easy-http_mock-builder&metric=security_rating&branch=1.x" alt="Bugs"></a>
+<a href="https://sonarcloud.io/component_measures?metric=bugs&branch=1.x&id=easy-http_mock-builder"><img src="https://sonarcloud.io/api/project_badges/measure?project=easy-http_mock-builder&metric=bugs&branch=1.x" alt="Bugs"></a>
+<a href="https://sonarcloud.io/component_measures?metric=code_smells&branch=1.x&id=easy-http_mock-builder"><img src="https://sonarcloud.io/api/project_badges/measure?project=easy-http_mock-builder&metric=code_smells&branch=1.x" alt="Bugs"></a>
 
 This library supports the following versions of Guzzle Http Client.
 
