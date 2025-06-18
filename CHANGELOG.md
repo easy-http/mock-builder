@@ -1,5 +1,14 @@
 # Release Notes for 1.x
 
+## [v1.3.0 (2025-06-18)](https://github.com/easy-http/mock-builder/compare/v1.2.0...v1.3.0)
+
+## Added
+- Added support for  PHP 8.4 ([#38](https://github.com/easy-http/mock-builder/pull/38))
+- Added SonarQube analysis to CI pipeline using GitHub Actions ([#37](https://github.com/easy-http/mock-builder/pull/37))
+
+## Removed
+- Removed Scrutinizer from CI/CD pipeline [#4395013b](https://github.com/easy-http/mock-builder/commit/4395013b8afaabb76621c183f073d91bdce7760e)
+
 ## [v1.2.0 (2023-09-24)](https://github.com/easy-http/mock-builder/compare/v1.1.0...v1.2.0)
 
 ## Added
